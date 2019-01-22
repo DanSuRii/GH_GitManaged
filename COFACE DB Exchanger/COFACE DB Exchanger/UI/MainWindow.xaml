@@ -1,0 +1,21 @@
+﻿<Window x:Class="COFACE_DB_Exchanger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:COFACE_DB_Exchanger"
+        mc:Ignorable="d"
+        Title="Coface DB Exchanger" Height="350" Width="502.792" ResizeMode="NoResize"        
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="138*"/>
+            <RowDefinition Height="181*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btn_OpenExcel" Content="_Durchsuchen" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" Click="btn_OpenExcel_Click"  />
+        <Label x:Name="label" Content="Source Excel Path :" HorizontalAlignment="Left" Margin="26,63,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label x:Name="labelExcelPath" Content="{Binding ExcelPath}" HorizontalAlignment="Left" Margin="26,105,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnToCSV" Content="zur CSV Exportieren" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Bottom" Margin="26,0,0,10" Click="btnToCSV_Click"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,10 @@
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\CofaceDB\bin\Debug\CofaceDB.dacpac
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\CofaceDB\bin\Debug\CofaceDB.dll
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\CofaceDB\bin\Debug\CofaceDB.pdb
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\CofaceDB\obj\Debug\CofaceDB.dll
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\CofaceDB\obj\Debug\CofaceDB.pdb
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\CofaceDB\bin\Debug\CofaceDB.dacpac
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\CofaceDB\bin\Debug\CofaceDB.dll
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\CofaceDB\bin\Debug\CofaceDB.pdb
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\CofaceDB\obj\Debug\CofaceDB.dll
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\CofaceDB\obj\Debug\CofaceDB.pdb

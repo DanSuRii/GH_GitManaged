@@ -1,0 +1,13 @@
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\ExcelWorker\bin\Debug\ExcelWorker.exe.config
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\ExcelWorker\bin\Debug\ExcelWorker.exe
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\ExcelWorker\bin\Debug\ExcelWorker.pdb
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\ExcelWorker\obj\Debug\ExcelWorker.csprojResolveAssemblyReference.cache
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\ExcelWorker\obj\Debug\ExcelWorker.csproj.ResolveComReference.cache
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\ExcelWorker\obj\Debug\ExcelWorker.exe
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\ExcelWorker\obj\Debug\ExcelWorker.pdb
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\ExcelWorker\bin\Debug\ExcelWorker.exe.config
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\ExcelWorker\bin\Debug\ExcelWorker.exe
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\ExcelWorker\bin\Debug\ExcelWorker.pdb
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\ExcelWorker\obj\Debug\ExcelWorker.csproj.ResolveComReference.cache
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\ExcelWorker\obj\Debug\ExcelWorker.exe
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\ExcelWorker\obj\Debug\ExcelWorker.pdb

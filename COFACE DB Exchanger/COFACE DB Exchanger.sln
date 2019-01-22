@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COFACE DB Exchanger", "COFACE DB Exchanger\COFACE DB Exchanger.csproj", "{2E45D06E-6229-4AA9-8421-9A73F4AEC92A}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CofaceDB", "CofaceDB\CofaceDB.sqlproj", "{68145767-D3F3-4C43-9573-85B1DF13EC58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelWorker", "ExcelWorker\ExcelWorker.csproj", "{488A7C41-220C-4121-B345-429251ABFBC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{723858A4-773F-418B-80E0-878BBD8E593B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E45D06E-6229-4AA9-8421-9A73F4AEC92A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E45D06E-6229-4AA9-8421-9A73F4AEC92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E45D06E-6229-4AA9-8421-9A73F4AEC92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E45D06E-6229-4AA9-8421-9A73F4AEC92A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68145767-D3F3-4C43-9573-85B1DF13EC58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68145767-D3F3-4C43-9573-85B1DF13EC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68145767-D3F3-4C43-9573-85B1DF13EC58}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{68145767-D3F3-4C43-9573-85B1DF13EC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68145767-D3F3-4C43-9573-85B1DF13EC58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68145767-D3F3-4C43-9573-85B1DF13EC58}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{488A7C41-220C-4121-B345-429251ABFBC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488A7C41-220C-4121-B345-429251ABFBC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488A7C41-220C-4121-B345-429251ABFBC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488A7C41-220C-4121-B345-429251ABFBC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{723858A4-773F-418B-80E0-878BBD8E593B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723858A4-773F-418B-80E0-878BBD8E593B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{723858A4-773F-418B-80E0-878BBD8E593B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723858A4-773F-418B-80E0-878BBD8E593B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

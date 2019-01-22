@@ -1,0 +1,77 @@
+24.02.2017 16:02:10	This log contains information about the import schema operation into project 'CofaceDB' on computer 'LOGISTIK-8' by user 'A.Roennburg'.
+24.02.2017 16:02:10	Import of database schema has started.
+24.02.2017 16:02:15	Gathering database options
+24.02.2017 16:02:15	Gathering users
+24.02.2017 16:02:15	Gathering roles
+24.02.2017 16:02:15	Gathering application roles
+24.02.2017 16:02:15	Gathering role memberships
+24.02.2017 16:02:15	Gathering filegroups
+24.02.2017 16:02:15	Gathering full-text catalogs
+24.02.2017 16:02:15	Gathering assemblies
+24.02.2017 16:02:15	Gathering certificates
+24.02.2017 16:02:15	Gathering asymmetric keys
+24.02.2017 16:02:15	Gathering symmetric keys
+24.02.2017 16:02:15	Gathering encrypted symmetric keys
+24.02.2017 16:02:15	Gathering schemas
+24.02.2017 16:02:15	Gathering XML schema collections
+24.02.2017 16:02:15	Gathering user-defined data types
+24.02.2017 16:02:15	Gathering user-defined types
+24.02.2017 16:02:15	Gathering table types
+24.02.2017 16:02:15	Gathering unique keys for table types
+24.02.2017 16:02:15	Gathering primary keys for table types
+24.02.2017 16:02:15	Gathering indexes for table types
+24.02.2017 16:02:15	Gathering check constraints for table types
+24.02.2017 16:02:15	Gathering default constraints for table types
+24.02.2017 16:02:15	Gathering partition functions
+24.02.2017 16:02:15	Gathering partition schemes
+24.02.2017 16:02:15	Gathering functions
+24.02.2017 16:02:15	Gathering encrypted functions
+24.02.2017 16:02:15	Gathering aggregates
+24.02.2017 16:02:15	Gathering procedures
+24.02.2017 16:02:15	Gathering encrypted procedures
+24.02.2017 16:02:15	Gathering tables
+24.02.2017 16:02:15	Gathering primary keys
+24.02.2017 16:02:15	Gathering unique constraints
+24.02.2017 16:02:15	Gathering foreign keys
+24.02.2017 16:02:15	Gathering default constraints
+24.02.2017 16:02:15	Gathering check constraints
+24.02.2017 16:02:15	Gathering views
+24.02.2017 16:02:15	Gathering encrypted views
+24.02.2017 16:02:15	Gathering indexes
+24.02.2017 16:02:15	Gathering statistics
+24.02.2017 16:02:15	Gathering full-text index stoplists
+24.02.2017 16:02:15	Gathering search property lists
+24.02.2017 16:02:15	Gathering search properties
+24.02.2017 16:02:15	Gathering full-text indexes
+24.02.2017 16:02:15	Gathering column store indexes
+24.02.2017 16:02:15	Gathering spatial indexes
+24.02.2017 16:02:15	Gathering XML indexes
+24.02.2017 16:02:15	Gathering Selective XML indexes
+24.02.2017 16:02:15	Gathering encrypted triggers
+24.02.2017 16:02:15	Gathering triggers
+24.02.2017 16:02:15	Gathering encrypted and clr ddl triggers
+24.02.2017 16:02:15	Gathering ddl triggers
+24.02.2017 16:02:15	Gathering synonyms
+24.02.2017 16:02:15	Gathering defaults
+24.02.2017 16:02:15	Gathering data constraint uddt bindings
+24.02.2017 16:02:15	Gathering rules
+24.02.2017 16:02:15	Gathering data constraint uddt bindings
+24.02.2017 16:02:15	Gathering message types
+24.02.2017 16:02:15	Gathering queues
+24.02.2017 16:02:15	Gathering contracts
+24.02.2017 16:02:15	Gathering services
+24.02.2017 16:02:15	Gathering event notifications
+24.02.2017 16:02:15	Gathering remote service bindings
+24.02.2017 16:02:15	Gathering broker priorities
+24.02.2017 16:02:15	Gathering signatures
+24.02.2017 16:02:15	Gathering data compression options
+24.02.2017 16:02:15	Gathering sequence types
+24.02.2017 16:02:15	Gathering extended properties
+24.02.2017 16:02:15	Gathering credentials
+24.02.2017 16:02:15	Gathering logins
+24.02.2017 16:02:15	Gathering server audits
+24.02.2017 16:02:15	Scanning project for duplicate elements
+24.02.2017 16:02:15	Finished duplicate element processing
+24.02.2017 16:02:16	Finished importing database.
+24.02.2017 16:02:16	A summary of the import was saved to the following location: C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\CofaceDB\Import Schema Logs\CofaceDB_20170224030210.log
+24.02.2017 16:02:16	Click Finish to continue...

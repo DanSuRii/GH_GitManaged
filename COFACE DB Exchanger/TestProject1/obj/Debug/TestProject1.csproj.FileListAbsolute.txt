@@ -1,0 +1,10 @@
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\TestProject1\bin\Debug\TestProject1.dll.config
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\TestProject1\bin\Debug\TestProject1.dll
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\TestProject1\bin\Debug\TestProject1.pdb
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\TestProject1\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\TestProject1\bin\Debug\de\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\TestProject1\obj\Debug\TestProject1.csprojResolveAssemblyReference.cache
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\TestProject1\obj\Debug\TestProject1.dll
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\TestProject1\obj\Debug\TestProject1.pdb
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\TestProject1\obj\Debug\TestProject1.SqlServerUnitTest1.resources
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\TestProject1\obj\Debug\TestProject1.csproj.GenerateResource.Cache

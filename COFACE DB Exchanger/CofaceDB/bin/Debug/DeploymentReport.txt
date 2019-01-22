@@ -1,0 +1,37 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Tbl_COF_OP] (Table)
+       [dbo].[Tbl_Coface_Variables] (Table)
+       [dbo].[Tbl_Hoba_OPOS_20161130] (Table)
+       [dbo].[Tbl_Hoba_OPOS_20161201] (Table)
+       [dbo].[Tbl_Hoba_Stream] (Table)
+       [dbo].[Tbl_Hoba_Stream_UCS2] (Table)
+       [dbo].[Tbl_Hoba_Stream_UTF8] (Table)
+       [dbo].[Tbl_HOBA_Xls] (Table)
+       [dbo].[Tbl_TestDatumDef] (Table)
+       [dbo].[Tbl_WWS_20160920-20160922] (Table)
+       [dbo].[Tbl_WWS_20160928_20160929] (Table)
+       [dbo].[Tbl_WWS_OP] (Table)
+       [dbo].[Tbl_WWS_Sample] (Table)
+       [dbo].[test] (Table)
+       Default Constraint: unnamed constraint on [dbo].[Tbl_TestDatumDef] (Default Constraint)
+       [dbo].[usp_Backup_WWSOP] (Procedure)
+       [dbo].[usp_COF_HOBA_DatenInput] (Procedure)
+       [dbo].[usp_COF_Prepare_HOBAStream] (Procedure)
+       [dbo].[usp_Create_CofaceWWS_OPTbl] (Procedure)
+       [dbo].[usp_Prepare_HOBA_OPOS] (Procedure)
+       [dbo].[usp_Prepare_WWS_OPTbl] (Procedure)
+       [dbo].[usp_PrepareCofaceTbl] (Procedure)
+       [dbo].[usp_Set_WWSOP_Date] (Procedure)
+
+** Supporting actions

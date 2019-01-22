@@ -1,0 +1,1 @@
+C:\Users\A.Roennburg>sqlcmd -S .\SQLEXPRESS -d COFACE -E -s";" -R -o C:\temp\firstexport.csv -W -u  -i "C:\Users\A.Roennburg\Documents\GH_ArbeitPlatz\COFACE\FINAL_QUERY\COF_OP_Query.sql"

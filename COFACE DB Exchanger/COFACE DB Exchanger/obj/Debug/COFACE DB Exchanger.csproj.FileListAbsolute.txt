@@ -1,0 +1,34 @@
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\bin\Debug\COFACE DB Exchanger.exe.config
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\bin\Debug\COFACE DB Exchanger.exe
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\bin\Debug\COFACE DB Exchanger.pdb
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\UI\MainWindow.g.cs
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\UI\App.g.cs
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger_MarkupCompile.cache
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger_MarkupCompile.lref
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\UI\MainWindow.baml
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.g.resources
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE_DB_Exchanger.Properties.Resources.resources
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.csproj.GenerateResource.Cache
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.exe
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.pdb
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.csprojResolveAssemblyReference.cache
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\bin\Debug\ExcelWorker.exe
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\bin\Debug\ExcelWorker.pdb
+C:\Users\A.Roennburg\Documents\CodesSample\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.csproj.ResolveComReference.cache
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\bin\Debug\COFACE DB Exchanger.exe.config
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.csproj.ResolveComReference.cache
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.exe
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.pdb
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\bin\Debug\COFACE DB Exchanger.exe
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\bin\Debug\COFACE DB Exchanger.pdb
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\bin\Debug\ExcelWorker.exe
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\bin\Debug\ExcelWorker.pdb
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.csprojResolveAssemblyReference.cache
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\UI\MainWindow.g.cs
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\UI\App.g.cs
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger_MarkupCompile.cache
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger_MarkupCompile.lref
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\UI\MainWindow.baml
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.g.resources
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE_DB_Exchanger.Properties.Resources.resources
+C:\Users\A.Roennburg\Documents\GH_GitManaged\COFACE DB Exchanger\COFACE DB Exchanger\obj\Debug\COFACE DB Exchanger.csproj.GenerateResource.Cache
