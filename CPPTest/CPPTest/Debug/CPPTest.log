@@ -1,3 +1,3 @@
-﻿  sharedtoshared.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\sharedtoshared.cpp(16): warning C4307: '*': integral constant overflow
+﻿  simpleTests.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\simpletests.cpp(10): warning C4307: '*': integral constant overflow
   CPPTest.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\CPPTest\Debug\CPPTest.exe

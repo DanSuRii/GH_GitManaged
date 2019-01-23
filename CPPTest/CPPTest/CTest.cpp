@@ -10,7 +10,8 @@ namespace NS_TEST
 	std::shared_ptr<Test> TestRepo::_cont[] = {
 		DECL_TEST(HWORLD),
 		DECL_TEST(WORLDTEST),
-		DECL_TEST(SHAREDTOSHARED)
+		DECL_TEST(SHAREDTOSHARED),
+		DECL_TEST(SSTREAMLOG),
 	};
 
 	void TestImpl<"HWORLD"_hash >::Do() { std::cout << this->_strName << std::endl; }
