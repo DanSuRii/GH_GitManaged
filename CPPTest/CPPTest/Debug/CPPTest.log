@@ -1,6 +1,2 @@
-﻿  simpleTests.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\simpletests.cpp(10): warning C4307: '*': integral constant overflow
-c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\simpletests.cpp(43): warning C4307: '*': integral constant overflow
-c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\simpletests.cpp(101): warning C4307: '*': integral constant overflow
-c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\simpletests.cpp(173): warning C4307: '*': integral constant overflow
-  CPPTest.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\CPPTest\Debug\CPPTest.exe
+﻿  CtxConsistency.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctxconsistency.cpp(119): warning C4307: '*': integral constant overflow

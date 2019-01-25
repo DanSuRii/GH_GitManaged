@@ -144,10 +144,19 @@ constexpr IOCtx* GetIoctxFromOverlappedPtr(LPWSAOVERLAPPED ptrOverlap) //it does
 	return reinterpret_cast<IOCtx*>(reinterpret_cast<char*>(ptrOverlap) - (int)(&(((IOCtx*)nullptr)->_overlapped)));
 }
 
+/*
+IOCtx* GetIoctxFromOverlappedPtr(WSAOVERLAPPED IOCtx::*ptrOverlap) 
+{
+	return reinterpret_cast<IOCtx*>((char*)(ptrOverlap) - (int)(&(((IOCtx*)nullptr)->_overlapped)));
+}
+*/
+
 constexpr IOCtx* GetIoctxFromWsabufPtr(WSABUF* ptrWSABuf)
 {
 	return reinterpret_cast<IOCtx*>(reinterpret_cast<char*>(ptrWSABuf) - (int)(&(((IOCtx*)nullptr)->_wsaBuf)));
 }
+
+
 
 struct IOCtxInherit : public WSAOVERLAPPED
 {
