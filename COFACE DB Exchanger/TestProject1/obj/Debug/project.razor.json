@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\A.Roennburg\\Documents\\GH_GitManaged\\COFACE DB Exchanger\\TestProject1\\TestProject1.csproj",
+  "TargetFramework": "v4.5",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}
