@@ -1,3 +1,5 @@
-﻿  IOCPNetwork.cpp
-SimplIOCPServer.obj : error LNK2019: unresolved external symbol "public: void __thiscall Server::Run(void)" (?Run@Server@@QAEXXZ) referenced in function _main
-C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\Debug\SimplIOCPServer.exe : fatal error LNK1120: 1 unresolved externals
+﻿  BufferPool.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(39): warning C4018: '<=': signed/unsigned mismatch
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(46): warning C4018: '>': signed/unsigned mismatch
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(49): warning C4018: '>': signed/unsigned mismatch
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(61): warning C4018: '<': signed/unsigned mismatch

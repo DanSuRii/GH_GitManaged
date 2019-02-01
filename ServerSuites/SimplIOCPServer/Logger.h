@@ -47,3 +47,4 @@ void Log(Args&& ... args)
 }
 
 #define LOG_FN( ... ) Log( __FUNCSIG__ , __VA_ARGS__ ) 
+#define CHECK_RETURN( cond, ... ) if( (cond) ){ LOG_FN( ", " , #cond , ",  " , __VA_ARGS__ ); return ; }

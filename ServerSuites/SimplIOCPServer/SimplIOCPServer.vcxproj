@@ -157,14 +157,18 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\Boost\boost\chrono\io\time_point_io.hpp" />
     <ClInclude Include="AgentDestructor.h" />
+    <ClInclude Include="BufferPool.h" />
+    <ClInclude Include="constants.h" />
     <ClInclude Include="IOCPNetwork.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="network.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="types.h" />
     <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AgentDestructor.cpp" />
+    <ClCompile Include="BufferPool.cpp" />
     <ClCompile Include="IOCPNetwork.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="network.cpp" />
@@ -175,6 +179,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SimplIOCPServer.cpp" />
+    <ClCompile Include="utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="inclBoost.props" />

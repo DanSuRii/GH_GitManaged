@@ -12,6 +12,8 @@ namespace NS_DPNET
 		void ClearIOCPHandle();
 		void ClearAndWaitsThreads();
 		virtual ~IOCP();
+
+		bool Listen( std::string strPort );
 	private:
 		void WorkerThread();
 
@@ -24,5 +26,6 @@ namespace NS_DPNET
 		AgentDestructor dtorAgt;
 
 		std::vector< std::thread > _threads;
+		std::list< std::shared_ptr< class Listener > > _listeners;
 	};
 }

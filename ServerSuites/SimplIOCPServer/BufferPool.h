@@ -1,0 +1,95 @@
+#pragma once
+
+const unsigned int DEFAULT_LEN = 256;
+
+class BufferPool;
+
+class Buffer
+{
+public:
+	Buffer(TBUFIDX idx)
+		: _idx(idx)
+	{
+
+	}
+
+
+	inline bool CheckInUse() { return bInUse; }
+	
+	inline void SetInUse() { bInUse = true; }
+	inline void ResetInUse() { bInUse = false; }
+
+	std::pair< size_t, char*> GetBuffer();
+private:
+	std::atomic_bool bInUse = false;
+
+	TBUFIDX _idx;
+	char buffer[BUFFER_LEN];
+};
+using PBuffer = std::shared_ptr<Buffer>;
+
+using PREF_CNT = std::shared_ptr< std::atomic_int >;
+
+class BuffAccessor
+{
+	friend BufferPool;
+	BuffAccessor() = delete;
+	BuffAccessor(TBUFIDX idx);
+public:
+	BuffAccessor(BuffAccessor&);
+	BuffAccessor(BuffAccessor&&) = default;
+
+	~BuffAccessor();
+
+	int GetRefRemain();
+
+	TBUFIDX GetIdx() { return _idx; }
+
+	static int GetRefRemain(TBUFIDX idx);
+
+private:
+	void IncreaseRef();
+	int DecreaseRef();
+
+	TBUFIDX _idx;
+
+	static std::mutex				_mtxCont;
+	static std::vector< PREF_CNT > _contRef;
+};
+
+class BufferPool
+{
+public:
+
+	BufferPool();
+	virtual ~BufferPool();
+
+	BuffAccessor GetNewAccessor();
+
+	char* GetBuffer(BuffAccessor key);
+	void AccessorDestruct(TBUFIDX key);
+
+	static BufferPool& GetInstance() 
+	{
+		static BufferPool _inst;
+		return _inst;
+	}
+
+	size_t GetContainerLen();
+	size_t GetAvailableCnt();
+	bool AllAvailable();
+private:
+	void BufferRecycle(TBUFIDX key);
+
+
+	void _grow_up();
+	TBUFIDX GetAvailable();
+
+	std::vector	< PBuffer > _cont;
+	
+	std::mutex				_mtxAvailable;
+	std::list	< TBUFIDX > _available;
+
+
+};
+

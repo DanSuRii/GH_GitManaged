@@ -12,6 +12,8 @@
 // TODO: add headers that you want to pre-compile here
 #include <WinSock2.h>
 
+#include <cctype>
+
 #include <memory>
 
 #include <atomic>
@@ -24,6 +26,8 @@
 #include <queue>
 #include <stack>
 
+#include "types.h"
+#include "constants.h"
 #include "utilities.h"
 
 

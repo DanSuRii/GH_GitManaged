@@ -3,6 +3,7 @@
 #include "AgentDestructor.h"
 
 #include <MSWSock.h>
+#include <WS2tcpip.h>
 
 #define LOOP_THROUGH( exp ) for( decltype( exp ) i = 0 ; i < exp ; ++i ) 
 
@@ -51,9 +52,6 @@ namespace NS_DPNET
 
 	};
 
-	class RecvBuffer 
-	{
-	};
 
 	class IOCtx : public OVERLAPPED
 	{
@@ -70,13 +68,24 @@ namespace NS_DPNET
 	class Listener : public ICompletionKey
 	{
 	public:
-		Listener( HANDLE hIocp );
+		Listener( HANDLE hIocp, std::string strPort );
 		~Listener();
 
 
 		inline bool isInit() { return bInit; }
 		inline operator bool() { return isInit(); }
+		inline bool IsValid(HANDLE hIocp) {
+			return (hIocp != NULL && hIocp != INVALID_HANDLE_VALUE);
+		}		
+
 	private:
+
+		/// it works only firsttime to accept waiting		
+		/// possible to one to N accance waiting
+		void RegistFirstAccept()
+		{
+		}
+
 		HANDLE _hIocp;
 		
 		SocketCtx sock;
@@ -87,15 +96,51 @@ namespace NS_DPNET
 		bool bInit = false;
 	};
 
-	Listener::Listener( HANDLE hIocp )
+	Listener::Listener( HANDLE hIocp, std::string strPort )
 		: _hIocp(hIocp)
 	{
-		if (false == sock.isValid()) {
-			LOG_FN(", listen socket ctx is invalid.");
+		CHECK_RETURN(false == IsValid(hIocp), "IOCP parameter invalid: ", hIocp);
+		CHECK_RETURN(false == NS_DPUTIL::CheckPortStringToUseable(strPort), "Port parameter invalid: ", strPort);
+		CHECK_RETURN(false == sock.isValid(), "listen socket ctx is invalid.");		
+
+		struct addrinfo hints{0};
+		struct addrinfo *addrlocal(nullptr);
+
+		LINGER linger;
+		linger.l_onoff = 1;
+		linger.l_linger = 0;
+
+		//Resolve the interface
+		hints.ai_flags = AI_PASSIVE;
+		hints.ai_family = AF_INET;
+		hints.ai_socktype = SOCK_STREAM;
+		hints.ai_protocol = IPPROTO_IP;
+
+		if ( 0 != ::getaddrinfo( NULL, strPort.c_str(), &hints, &addrlocal ))
+		{
+			LOG_FN( ", getaddrinfo() failed with error: ", WSAGetLastError() );
 			return;
 		}
 
-		int nRet = ::listen(sock.Get(), 5);
+		if (nullptr == addrlocal)
+		{
+			LOG_FN(", getaddrinfo() failed to resolve/convert the interface: ", WSAGetLastError());
+			return;
+		}
+
+		NS_DPUTIL::RAIIStack raiiS;
+		raiiS.Push([&] {freeaddrinfo(addrlocal);});
+
+		int nRet(0);
+
+		nRet = ::bind(sock.Get(), addrlocal->ai_addr, (int) addrlocal->ai_addrlen);
+		if( SOCKET_ERROR == nRet )
+		{
+			LOG_FN(", bind() failed: ", WSAGetLastError());
+			return;
+		}
+
+		nRet = ::listen(sock.Get(), 5);
 		if( nRet == SOCKET_ERROR )
 		{ 
 			LOG_FN( ", listen() failed: ", WSAGetLastError() );
@@ -164,8 +209,6 @@ namespace NS_DPNET
 		
 		RegDtor([&] { ClearAndWaitsThreads(); });
 
-		
-
 
 		bInit = true;
 	}
@@ -197,6 +240,14 @@ namespace NS_DPNET
 			cur();
 			_contFNDestructor.pop();
 		}
+	}
+
+	bool IOCP::Listen(std::string strPort)
+	{
+		//if portnumber already uses, do not create listener
+		auto pListener = New<Listener>( hIOCP, strPort );
+
+		return (nullptr == pListener || *pListener);
 	}
 
 	void IOCP::WorkerThread()
