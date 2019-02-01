@@ -8,6 +8,8 @@
 #include <iostream>
 #include <ctime>
 
+#include <boost\chrono.hpp>
+
 // ILog instantination
 class ConsoleLog : public ILogger
 {
@@ -29,19 +31,6 @@ private:
 
 };
 
-template<class ...Args>
-void Log(Args && ... args)
-{
-	std::stringstream sstr;
-
-	//a for aggregator
-	const int a[]{ ( sstr << args, 0 ) ... };
-	static_cast<void>(a);
-
-	auto logger =  Logger::GetInstance();
-	logger.WriteLine( sstr.str() );
-}
-
 Logger::Logger()
 	: _contLogger{ New<ConsoleLog>() }
 	, _thWriter( std::bind( &Logger::cbThreadWriter, this ) )
@@ -59,14 +48,19 @@ Logger::~Logger()
 
 void Logger::WriteLine(std::string&& strToWrite )
 {
-	auto now = std::chrono::system_clock::now();
-	std::string strQueue = strToWrite;
+#if true
+	auto now = boost::chrono::system_clock::now();
 
-	auto time = std::chrono::system_clock::to_time_t(now);
-	strQueue.insert(0, std::string(std::ctime(&time)) + " >> ");
+	std::stringstream sstream;
+	sstream << now << " >> " << strToWrite;
+
 
 	std::lock_guard<decltype(_mtxQueue)> grd(_mtxQueue);
-	_queueStrToWrite.push_back( std::move( strQueue ) );
+	_queueStrToWrite.push_back(std::move(sstream.str()));
+#else
+	std::lock_guard<decltype(_mtxQueue)> grd(_mtxQueue);
+	_queueStrToWrite.push_back(std::move(strToWrite));
+#endif // false 
 }
 
 void Logger::cbThreadWriter()

@@ -20,6 +20,11 @@ namespace NS_DPNET
 
 			_bInit = true;
 		}
+
+		~WSAInit()
+		{
+			WSACleanup();
+		}
 	public:
 		static WSAInit& GetInstance()
 		{

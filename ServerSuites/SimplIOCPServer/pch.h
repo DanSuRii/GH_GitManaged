@@ -22,8 +22,14 @@
 
 #include <list>
 #include <queue>
+#include <stack>
 
 #include "utilities.h"
+
+
+#include <sstream>
 #include "logger.h"
+
+#include "AgentDestructor.h"
 
 #endif //PCH_H

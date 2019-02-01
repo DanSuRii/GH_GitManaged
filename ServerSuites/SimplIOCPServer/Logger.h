@@ -34,6 +34,16 @@ private:
 };
 
 template< class ...Args >
-void Log(Args&& ...);
+void Log(Args&& ... args)
+{
+	std::stringstream sstr;
+
+	//a for aggregator
+	const int a[]{ (sstr << args, 0) ... };
+	static_cast<void>(a);
+
+	auto& logger = Logger::GetInstance();
+	logger.WriteLine(sstr.str());
+}
 
 #define LOG_FN( ... ) Log( __FUNCSIG__ , __VA_ARGS__ ) 
