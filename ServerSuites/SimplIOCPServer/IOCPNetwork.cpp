@@ -35,6 +35,8 @@ namespace NS_DPNET
 				::closesocket(_sock);
 				_sock = INVALID_SOCKET;
 			}
+
+			return true;
 		}
 
 		SOCKET Get() { return _sock; }

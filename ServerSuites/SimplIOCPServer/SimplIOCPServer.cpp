@@ -9,7 +9,7 @@
 class Server
 {
 public:
-	void Run();
+	void Run() {};
 
 private:
 	NS_DPNET::Network network;

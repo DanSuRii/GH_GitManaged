@@ -6,6 +6,10 @@
 
 BufferPool& gBuffPool = BufferPool::GetInstance();
 
+decltype(BuffAccessor::_mtxCont)	BuffAccessor::_mtxCont;
+std::vector< PREF_CNT >  BuffAccessor::_contRef(BUFFER_LEN);
+
+
 BuffAccessor::BuffAccessor(TBUFIDX idx)
 	: _idx(idx)
 {
@@ -13,6 +17,7 @@ BuffAccessor::BuffAccessor(TBUFIDX idx)
 }
 
 BuffAccessor::BuffAccessor(BuffAccessor & rhs)
+	: _idx( rhs._idx )
 {
 	/*
 	++ref;
@@ -47,11 +52,23 @@ int BuffAccessor::GetRefRemain(TBUFIDX idx)
 
 void BuffAccessor::IncreaseRef()
 {
-	if (_idx > _contRef.size())
+	if (_idx >= _contRef.size())
 	{
-		std::lock_guard< std::mutex > grd( _mtxCont );
-		if (_idx > _contRef.size())
-			_contRef.reserve(_contRef.size() * 2);
+		std::unique_lock< decltype(BuffAccessor::_mtxCont) > grd(BuffAccessor::_mtxCont );
+		if (_idx >= _contRef.size())
+		{
+			//_contRef.reserve(_contRef.size() * 2);
+			_contRef.resize(_contRef.size() * 2);
+		}
+	}
+
+	if (nullptr == _contRef[_idx])
+	{
+		std::shared_lock< decltype(BuffAccessor::_mtxCont) > grd(BuffAccessor::_mtxCont);
+		if (nullptr == _contRef[_idx])
+		{
+			_contRef[_idx] = New< decltype(_contRef)::value_type::element_type >();
+		}
 	}
 
 	{
@@ -64,23 +81,25 @@ int BuffAccessor::DecreaseRef()
 {
 	assert(_idx < _contRef.size());
 
-	_contRef[_idx]->operator++();
+	_contRef[_idx]->operator--();
 
 	return *(_contRef[_idx]);
 }
 
 
 BufferPool::BufferPool()
-	: _cont(DEFAULT_LEN)
+	: _cont(DEFAULT_LEN)	
+	, idxLatest(0)
 {
 	//populate if use
 
-	for (decltype(_available.size()) i = 0; i < _available.size(); ++i)
+	for (decltype(_cont.size()) i = 0; i < _cont.size(); ++i)
 		_available.push_back(i);
 }
 
 BufferPool::~BufferPool()
 {
+	//Generate Simple Statstics...
 }
 
 BuffAccessor BufferPool::GetNewAccessor()
@@ -112,14 +131,15 @@ size_t BufferPool::GetAvailableCnt()
 {
 	return std::count_if(_cont.begin(), _cont.end(),
 		[](auto cur) {
-		return false == cur->CheckInUse()
+		return cur ? false == cur->CheckInUse() : true;
 	});
 }
 
 bool BufferPool::AllAvailable()
 {
-	return _cont.end() ==
-	std::find_if(_cont.begin(), _cont.end(), [](auto cur) { return nullptr == cur ? false : cur->CheckInUse(); }
+	auto end = _cont.begin() + idxLatest;
+	return end ==
+		std::find_if(_cont.begin(), end, [](auto cur) { return nullptr == cur ? false : cur->CheckInUse(); });
 }
 
 void BufferPool::BufferRecycle(TBUFIDX key)
@@ -138,7 +158,8 @@ void BufferPool::_grow_up()
 
 	auto firstAvail = _cont.size();
 	//growth container up
-	_cont.reserve(_cont.size() * 2);
+	//_cont.reserve(_cont.size() * 2);
+	_cont.resize(_cont.size() * 2);
 	
 	auto end = _cont.size();
 
@@ -152,7 +173,9 @@ void BufferPool::_grow_up()
 TBUFIDX BufferPool::GetAvailable()
 {
 	TBUFIDX ret(INVALID_IDX);
-	if ( _available.size() <= 0 )
+	
+#if 0 //unable to work
+	if (_available.size() <= 0)
 	{
 		std::lock_guard< std::mutex > grd(_mtxAvailable);
 		if (_available.size() <= 0)
@@ -161,13 +184,24 @@ TBUFIDX BufferPool::GetAvailable()
 		}
 	}
 
+#endif // 0 //unable to work
+
 	{
 		std::lock_guard<std::mutex> grd(_mtxAvailable);		
+		if (_available.size() <= 0) {
+			_grow_up();
+		}
 		ret = _available.front();
 		_available.pop_front();
+		
+		int latest = idxLatest;
+		idxLatest = latest > ret ? latest : ret;
 	}
+
 	if (nullptr == _cont[ret])
+	{
 		_cont[ret] = New<Buffer>(ret);
+	}
 
 	_cont[ret]->SetInUse();
 

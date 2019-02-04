@@ -1,0 +1,327 @@
+Microsoft (R)-Build-Engine, Version 15.9.21+g9802d43bc3 fÅr .NET Framework
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+Syntax:              MSBuild.exe [Optionen] [Projektdatei | Verzeichnis]
+
+Beschreibung:         Erstellt die angegebenen Ziele in der Projektdatei. Wenn
+                     keine Projektdatei angegeben ist, wird das aktuelle Arbeitsverzeichnis
+                     von MSBuild nach einer Datei durchsucht, die eine Dateierweiterung
+                     besitzt, die auf "proj" endet. Diese Datei wird dann verwendet. Wenn
+                     ein Verzeichnis angegeben ist, sucht MSBuild in diesem Verzeichnis
+                     nach einer Projektdatei.
+
+Schalter:
+
+  /target:<Ziele>  Erstellt diese Ziele in diesem Projekt. Mehrere Ziele werden durch ein Semikolon
+                     oder Komma voneinander getrennt. Alternativ kann jedes Ziel gesondert
+                     angegeben werden. (Kurzform: /t)
+                     Beispiel:
+                       /target:Resources; Compile
+
+  /property:<n>=<v>  Legt diese Eigenschaften auf Projektebene fest
+                     oder Åberschreibt sie. <n> ist der Eigenschaftenname, und < v> ist der Eigenschaftenwert.
+                     Mehrere Eigenschaften werden durch ein Semikolon oder Komma getrennt.
+                     Alternativ kann jede Eigenschaft gesondert angegeben werden. (Kurzform: /p)
+                     Beispiel:
+                       /property:WarningLevel=2;OutDir=bin\Debug\
+
+  /maxcpucount:[n]   Gibt die maximale Anzahl gleichzeitiger Prozesse an,
+                     mit denen die Erstellung ausgefÅhrt werden soll. Ohne den
+                     Schalter wird der Standardwert 1 verwendet. Wenn der Schalter ohne einen Wert angegeben wird,
+                     verwendet MSBuild
+                     alle Prozessoren des Computers. (Kurzform: /m[:n])
+      
+  /toolsversion:<Version>
+                     Die Version des MSBuild-Toolsets (Aufgaben, Ziele usw.),
+                     die wÑhrend des Erstellens zu verwenden ist. Diese Version Åberschreibt die
+                     von einzelnen Projekten angegebenen Versionen. (Kurzform:
+                     /tv)
+                     Beispiel:
+                       /toolsversion:3.5
+   
+  /verbosity:<Grad> Zeigt diesen Grad von Informationen im Ereignisprotokoll an.
+                     Folgende AusfÅhrlichkeitsgrade sind verfÅgbar: q[uiet], m[inimal],
+                     n[ormal], d[etailed] und diag[nostic]. (Kurzform: /v)
+                     Beispiel:
+                       /verbosity:quiet
+
+  /consoleloggerparameters:<Parameter>
+                     Parameter fÅr die Konsolenprotokollierung. (Kurzform: /clp)
+                     Folgende Parameter sind verfÅgbar:
+                        PerformanceSummary - Zeigt die in Aufgaben, Zielen und
+                            Projekten verbrachte Zeit an.
+                        Summary - Zeigt abschlie·end eine Zusammenfassung der Fehler und Warnungen an.
+                        NoSummary - Zeigt keine Fehler- und WarnungsÅbersicht am
+                            Ende an.
+                        ErrorsOnly - Zeigt nur Fehler an.
+                        WarningsOnly - Zeigt nur Warnungen an.
+                        NoItemAndPropertyList - Zeigt keine Liste der Elemente
+                            und Eigenschaften am Anfang jeder Projekterstellung an.
+                        ShowCommandLine - Zeigt TaskCommandLineEvent-Meldungen an.
+                        ShowTimestamp - Zeigt den Timestamp als PrÑfix einer
+                            Meldung an.
+                        ShowEventId - Zeigt die eventId fÅr gestartete 
+                            Ereignisse, abgeschlossene Ereignisse und Meldungen an.
+                        ForceNoAlign - Richtet den Text nicht an der Grî·e des
+                            Konsolenpuffers aus.
+                        DisableConsoleColor - Verwendet die Standardkonsolenfarben
+                            fÅr alle Protokollierungsmeldungen.
+                        DisableMPLogging - Deaktiviert die Ausgabe wie
+                            bei der Mehrprozessorprotokollierung im Modus
+                            mit nur einem Prozessor.
+                        EnableMPLogging - Aktiviert das Format der
+                            Mehrprozessorprotokollierung auch bei der AusfÅhrung
+                            im Modus mit nur einem Prozessor. Dieses Protokollierungsformat ist standardmÑ·ig aktiviert.
+                        ForceConsoleColor - Verwendet selbst dann ANSI-Konsolenfarben, wenn
+                            die Konsole dies nicht unterstÅtzt.
+                        Verbosity - öberschreibt die Einstellung fÅr /verbosity
+                            fÅr diese Protokollierung.
+                     Beispiel:
+                        /consoleloggerparameters:PerformanceSummary; NoSummary;
+                                                 Verbosity=minimal
+
+  /noconsolelogger   Deaktiviert die Standardkonsolenprotokollierung
+                     und protokolliert keine Ereignisse auf der Konsole. (Kurzform: /noconlog)
+
+  /fileLogger[n]     Protokolliert die Erstellungsausgabe in eine Datei. StandardmÑ·ig
+                     befindet sich diese im aktuellen Verzeichnis,
+                     der Dateiname lautet "msbuild[n].log". Ereignisse aller Knoten
+                     werden in einem einzigen Protokoll zusammengefasst. Der Speicherort der Datei und andere Parameter fÅr fileLogger
+                     kînnen durch das HinzufÅgen des Schalters
+                     "/fileLoggerParameters[n]" angegeben werden.
+                     "n" (optional) kann eine Zahl von 1-9 sein, sodass bis zu
+                     10 Dateiprotokollierungen angefÅgt werden kînnen. (Kurzform: /fl[n])
+    
+  /fileloggerparameters[n]:<Parameter>
+                     Gibt zusÑtzliche Parameter fÅr Dateiprotokollierungen an.
+                     Dieser Schalter bedeutet, dass der entsprechende Schalter
+                     "lelogger[n]" ebenfalls vorhanden ist.
+                     "n" (optional) kann eine Zahl von 1-9 sein.
+                     "/fileloggerparameters" wird auch von verteilten Dateiprotokollierungen
+                     verwendet (siehe Beschreibung zu " /distributedFileLogger").
+                     (Kurzform: /flp[n])
+                     Es sind dieselben Parameter wie fÅr die Konsolenprotokollierung
+                     verfÅgbar. Einige zusÑtzliche Parameter:
+                        LogFile - Pfad der Protokolldatei, in die
+                            das Buildprotokoll geschrieben wird.
+                        Append - Gibt an, ob das Buildprotokoll erweitert
+                            oder Åberschrieben wird. Mit diesem Schalter
+                            wird das Buildprotokoll an die Protokolldatei angefÅgt.
+                            Ohne diesen Schalter wird der Inhalt
+                            der vorhandenen Protokolldatei Åberschrieben.
+                            StandardmÑ·ig wird die Protokolldatei nicht erweitert.
+                        Encoding - Gibt die Codierung der Datei an,
+                            z.B. UTF-8, Unicode oder ASCII.
+                     Die Standardeinstellung fÅr "verbosity" ist "Detailed".
+                     Beispiele:
+                       /fileLoggerParameters:LogFile=MyLog.log;Append;
+                                           Verbosity=diagnostic;Encoding=UTF-8
+
+                       /flp:Summary;Verbosity=minimal;LogFile=msbuild.sum 
+                       /flp1:warningsonly;logfile=msbuild.wrn 
+                       /flp2:errorsonly;logfile=msbuild.err
+    
+  /distributedlogger:<Zentrale Protokollierung>*<Weiterleitende Protokollierung>
+                     Mithilfe dieser Protokollierung werden Ereignisse von MSBuild protokolliert,
+                     wobei an jeden Knoten eine andere Protokollierungsinstanz angefÅgt wird. Um mehrere
+                     Protokollierungen anzugeben, wird jede Protokollierung gesondert angegeben.
+                     (Kurzform: /dl)
+                     Die Syntax fÅr die <Protokollierung> lautet:
+                       [<Protokollierungsklasse>,]<Protokollierungsassembly>[;<Protokollierungsparameter>]
+                     Die Syntax fÅr die <Protokollierungsklasse> lautet:
+                       [<Teilweiser oder vollstÑndiger Namespace>]<Name der Protokollierungsklasse>
+                     Die Syntax fÅr die <Protokollierungsassembly> lautet:
+                       {< Assemblyname>[,<Starker Name>] | <Assemblydatei>}
+                     Die <Protokollierungsparameter> sind optional und werden genau
+                     so an die Protokollierung Åbergeben, wie sie eingegeben wurden. (Kurzform: /l)
+                     Beispiele:
+                       /dl:XMLLogger,MyLogger,Version=1.0.2,Culture=neutral
+                       /dl:MyLogger,C:\My.dll*ForwardingLogger,C:\Logger.dll
+
+  /distributedFileLogger
+                     Protokolliert die Erstellungsausgabe in mehrere Dateien, eine Protokolldatei
+                     pro MSBuild-Knoten. Der anfÑngliche Speicherort fÅr diese Dateien ist
+                     das aktuelle Verzeichnis. StandardmÑ·ig werden die Dateien
+                     "MSBuild< Knoten-ID>.log" benannt. Der Speicherort der Datei und
+                     andere Parameter fÅr fileLogger kînnen durch das HinzufÅgen
+                     des Schalters "/fileLoggerParameters" angegeben werden.
+
+                     Wenn mithilfe des fileLoggerParameters-Parameters ein Protokolldateiname
+                     festgelegt wurde, verwendet die verteilte Protokollierung den Dateinamen als
+                     Vorlage und fÅgt die Knoten-ID an diesen Dateinamen an,
+                     um fÅr jeden Knoten eine Protokolldatei zu erstellen.
+    
+  /logger:<Protokollierung>   Mithilfe dieser Protokollierung werden Ereignisse von MSBuild protokolliert. Um mehrere Protokollierungen anzugeben,
+                     wird jede Protokollierung gesondert angegeben.
+                     Die Syntax fÅr die <Protokollierung> lautet:
+                       [<Protokollierungsklasse>,]<Protokollierungsassembly>[;<Protokollierungsparameter>]
+                     Die Syntax fÅr die <Protokollierungsklasse> lautet:
+                       [<Teilweiser oder vollstÑndiger Namespace>]<Name der Protokollierungsklasse>
+                     Die Syntax fÅr die <Protokollierungsassembly> lautet:
+                       {< Assemblyname>[,<Starker Name>] | <Assemblydatei>}
+                     Die <Protokollierungsparameter> sind optional und werden genau
+                     so an die Protokollierung Åbergeben, wie sie eingegeben wurden. (Kurzform: /l)
+                     Beispiele:
+                       /logger:XMLLogger,MyLogger,Version=1.0.2,Culture=neutral
+                       /logger:XMLLogger,C:\Loggers\MyLogger.dll;OutputAsHTML
+
+  /binaryLogger[:[LogFile=]output.binlog[;ProjectImports={None,Embed,ZipFile}]]
+                     Serialisiert alle Buildereignisse in eine komprimierte BinÑrdatei.
+                     StandardmÑ·ig befindet sich die Datei im aktuellen Verzeichnis und hat den Namen
+                     "msbuild.binlog". Das binÑre Protokoll ist eine detaillierte Beschreibung
+                     des Buildprozesses, der spÑter zum Rekonstruieren von
+                     Textprotokollen dient und der von anderen Analysetools verwendet wird. Detaillierte
+                     Textprotokolle auf Diagnoseebene sind in der Regel 10-20-mal so gro· wie
+                     binÑre Protokolle, letztere enthalten jedoch mehr Informationen.
+                     (Kurzform: /bl)
+
+                     Die binÑre Protokollierung erfasst standardmÑ·ig den Quelltext von
+                     Projektdateien, einschlie·lich aller beim Buildvorgang aufgetretenen importierten
+                     Projekte und Zieldateien. Der optionale Schalter
+                     ProjectImports steuert dieses Verhalten:
+
+                      ProjectImports=None     - Projektimporte nicht
+                                                erfassen
+                      ProjectImports=Embed    - Projektimporte in die
+                                                Protokolldatei einbetten
+                      ProjectImports=ZipFile  - Projektdateien in
+                                                output.projectimports.zip
+                                                speichern, wobei "output" dem Namen
+                                                der binÑren Protokolldatei entspricht.
+
+                     Die Standardeinstellung fÅr ProjectImports ist "Embed".
+                     Hinweis: Die Protokollierung erfasst nur MSBuild-Quelldateien.
+                     Andere Dateien wie etwa CS, CPP usw. werden nicht erfasst.
+
+                     Eine BINLOG-Datei kann wiedergegeben werden, indem sie an
+                     msbuild.exe als Argument und nicht als Projekt/Projektmappe Åbergeben wird.
+                     Andere Protokollierungen erhalten die Informationen, die
+                     wie beim ursprÅnglichen Buildvorgang in der Protokolldatei enthalten sind.
+                     Weitere Informationen zu binÑren Protokollen und ihrer Verwendung erhalten Sie unter:
+                     https://github.com/Microsoft/msbuild/wiki/Binary-Log
+
+                     Beispiele:
+                       /bl
+                       /bl:output.binlog
+                       /bl:output.binlog;ProjectImports=None
+                       /bl:output.binlog;ProjectImports=ZipFile
+                       /bl:..\..\custom.binlog
+                       /binaryLogger
+    
+  /warnaserror[:code[;code2]]
+                     Liste mit als Fehler zu behandelnden Warncodes. Trennen Sie
+                     mehrere Warncodes durch Kommas oder Semikolons. Verwenden Sie den Switch
+                     ohne Daten, damit alle Warnungen als Fehler behandelt werden.
+                     (Kurzform: /err[:c;[c2]])
+
+                     Beispiel:
+                       /warnaserror:MSB4130
+
+                     Wenn eine Warnung als Fehler behandelt wird, wird das Ziel
+                     wie bei einer Warnung weiter ausgefÅhrt, die
+                     gesamte Erstellung schlÑgt jedoch fehl.
+    
+  /warnasmessage[:code[;code2]]
+                     Liste von Warncodes, die als Meldungen mit geringer PrioritÑt
+                     zu behandeln sind. Trennen Sie mehrere Warncodes
+                     durch Kommas oder Semikolons.
+                     (Kurzform: /nowarn[:c;[c2]])
+
+                     Beispiel:
+                       /warnasmessage:MSB3026
+    
+  /validate          öberprÅft das Projekt anhand des Standardschemas. (Kurz-
+                     form: /val)
+
+  /validate:<Schema> öberprÅft das Projekt anhand des angegebenen Schemas. (Kurz-
+                     form: /val)
+                     Beispiel:
+                       /validate:MyExtendedBuildSchema.xsd
+
+  /ignoreprojectextensions:<Erweiterungen>
+                     Liste der zu ignorierenden Erweiterungen, wenn die zu erstellende
+                     Projektdatei ermittelt wird. Verwenden Sie ein Semikolon oder ein Komma,
+                     um mehrere Erweiterungen voneinander zu trennen.
+                     (Kurzform: /ignore)
+                     Beispiel:
+                       /ignoreprojectextensions:.sln
+    
+  /nodeReuse:<Parameter>
+                     Aktiviert oder deaktiviert die Wiederverwendung von MSBuild-Knoten.
+                     Die Parameter lauten:
+                     TRUE - Knoten bleiben nach dem Abschluss der Erstellung erhalten
+                            und werden bei folgenden Erstellungen wiederverwendet (Standardeinstellung).
+                     FALSE - Knoten bleiben nach dem Abschluss der Erstellung nicht erhalten.
+                     (Kurzform: /nr)
+                     Beispiel:
+                       /nr:true
+    
+  /preprocess[:file] 
+                     Erstellt eine einzelne, zusammengesetzte Projektdatei
+                     durch Einbeziehen aller Dateien, die beim Erstellen
+                     importiert werden wÅrden, mit gekennzeichneten Grenzen. Dies kann
+                     sinnvoll sein, um zu ermitteln, welche Dateien
+                     importiert werden und woher sowie worin
+                     ihr Beitrag zum Erstellen besteht. Die Ausgabe wird standardmÑ·ig
+                     im Konsolenfenster angezeigt. Wenn der Pfad zu einer Ausgabedatei
+                     bereitgestellt wird, wird dieser verwendet.
+                     (Kurzform: /pp)
+                     Beispiel:
+                       /pp:out.txt
+    
+  /detailedsummary 
+                     Zeigt am Ende der Erstellung detaillierte Informationen
+                     zu den erstellten Konfigurationen an und enthÑlt eine ErlÑuterung, wie sie
+                     in Knoten geplant wurden.
+                     (Kurzform: /ds)
+    
+  /restore[:True|False]
+                     FÅhrt vor der Erstellung anderer Ziele ein Ziel namens
+                     "Restore" aus. Dies ist hilfreich, wenn Pakete in Ihrer
+                     Projektstruktur wiederhergestellt werden mÅssen, bevor sie
+                     erstellt werden kînnen. Die Angabe von /restore ist identisch mit
+                     der Angabe von /restore:True. Verwenden Sie den Parameter, um
+                     einen Wert au·er Kraft zu setzen, der aus einer Antwortdatei stammt.
+                     (Kurzform: /r)
+    
+  /restoreProperty:<N>=<W>
+                     Diese Eigenschaften auf Projektebene sollten nur
+                     wÑhrend der Wiederherstellung festgelegt oder Åberschrieben werden, und Sie dÅrfen keine Eigenschaften verwenden,
+                     die mit dem Argument "/property" angegeben werden. "<N>" ist der Eigenschaftenname,
+                     "<W>" ist der Eigenschaftenwert. Verwenden Sie ein
+                     Semikolon oder Komma, um mehrere Eigenschaften voneinander zu trennen,
+                     oder geben Sie jede Eigenschaft separat an.
+                     (Kurzform: /rp)
+                     Beispiel:
+                       /restoreProperty:IsRestore=true;MyProperty=value
+    
+  /profileevaluation:<Datei>    
+                     Erstellt ein Profil der MSBuild-Auswertung und speichert das Ergebnis 
+                     in der angegebenen Datei. Wenn die Erweiterung der angegebenen
+                     Datei ".md" lautet, wird das Ergebnis im Markdown-
+                     Format generiert. Andernfalls wird eine durch Tabstopp getrennte Datei erstellt.
+    
+  @<Datei>            FÅgt Befehlszeileneinstellungen aus einer Textdatei ein. Um mehrere
+                     Antwortdateien anzugeben, geben Sie jede Antwortdatei
+                     gesondert an.
+                     
+                     Alle Antwortdateien mit dem Name "msbuild.rsp" werden automatisch
+                     in den folgenden Speicherorten verwendet:
+                     (1) Verzeichnis von "msbuild.exe"
+                     (2) Verzeichnis des ersten erstellten Projekts oder Projektmappe
+
+  /noautoresponse    Schlie·t "MSBuild.rsp"-Dateien nicht automatisch ein. (Kurzform:
+                     /noautorsp)
+
+  /nologo            Zeigt kein Startbanner und keine Copyrightmeldung an.
+
+  /version           Zeigt nur Versionsinformationen an. (Kurzform: /ver)
+
+  /help              Zeigt diese Syntaxmeldung an. (Kurzform: /? oder /h)
+
+Beispiele:
+
+        MSBuild MyApp.sln /t:Rebuild /p:Configuration=Release
+        MSBuild MyApp.csproj /t:Clean
+                             /p:Configuration=Debug;TargetFrameworkVersion=v3.5
+    

@@ -1,0 +1,72 @@
+﻿  Microsoft (R)-Build-Engine, Version 15.9.21+g9802d43bc3 für .NET Framework
+  Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+  
+  Der Buildvorgang wurde am 04.02.2019 16:23:36 gestartet.
+  Projekt "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" auf Knoten "1" (Standardziele).
+  InitializeBuildStatus:
+    "Release\SimplIOCPServer.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+  ClCompile:
+    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\CL.exe /c /I\boost\ /Zi /nologo /W3 /WX- /diagnostics:classic /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Yc"pch.h" /Fp"Release\SIOCPServer_x86_Release.pch" /Fo"Release\\" /Fd"Release\SimplIOCPServer.pdb" /Gd /TP /analyze- /FC /errorReport:queue pch.cpp
+    pch.cpp
+    Alle Ausgaben sind aktuell.
+    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\CL.exe /c /I\boost\ /Zi /nologo /W3 /WX- /diagnostics:classic /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"Release\SIOCPServer_x86_Release.pch" /Fo"Release\\" /Fd"Release\SimplIOCPServer.pdb" /Gd /TP /analyze- /FC /errorReport:queue AgentDestructor.cpp BufferPool.cpp IOCPNetwork.cpp Logger.cpp network.cpp SimplIOCPServer.cpp utilities.cpp
+    AgentDestructor.cpp
+    BufferPool.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(55): warning C4018: '>=': signed/unsigned mismatch [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(58): warning C4018: '>=': signed/unsigned mismatch [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+    IOCPNetwork.cpp
+    Logger.cpp
+    network.cpp
+    SimplIOCPServer.cpp
+    utilities.cpp
+  Lib:
+    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\Lib.exe /OUT:"lib\SIOCPServer_x86_Release.lib" /NOLOGO /LTCG Release\AgentDestructor.obj
+    Release\BufferPool.obj
+    Release\IOCPNetwork.obj
+    Release\Logger.obj
+    Release\network.obj
+    Release\pch.obj
+    Release\SimplIOCPServer.obj
+    Release\utilities.obj
+    SimplIOCPServer.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x86_Release.lib
+  FinalizeBuildStatus:
+    Die Datei "Release\SimplIOCPServer.tlog\unsuccessfulbuild" wird gelöscht.
+    Aktualisieren des Timestamps von "Release\SimplIOCPServer.tlog\SimplIOCPServer.lastbuildstate".
+  Die Erstellung von Projekt "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" ist abgeschlossen (Standardziele).
+  
+  Der Buildvorgang wurde erfolgreich ausgeführt.
+  
+  "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" (Standardziel) (1) ->
+  (ClCompile Ziel) -> 
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(55): warning C4018: '>=': signed/unsigned mismatch [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(58): warning C4018: '>=': signed/unsigned mismatch [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+  
+      2 Warnung(en)
+      0 Fehler
+  
+  Verstrichene Zeit 00:00:05.30
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.pdb
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x64_Debug.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x64_Release.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x86_Debug.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x86_Release.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\test_x86.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\test_x86_Debug.lib
+          8 Datei(en) kopiert.
+  stdafx.cpp
+  unittest1.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(37): warning C4114: same type qualifier used more than once
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(75): warning C4244: 'initializing': conversion from '_Rep' to 'unsigned int', possible loss of data
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(85): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+     Creating library C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\Release\UnitTests.lib and object C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\Release\UnitTests.exp
+  Generating code
+  All 546 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  UnitTests.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\Release\UnitTests.dll

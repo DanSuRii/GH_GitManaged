@@ -53,7 +53,7 @@ private:
 
 	TBUFIDX _idx;
 
-	static std::mutex				_mtxCont;
+	static std::shared_mutex		_mtxCont;
 	static std::vector< PREF_CNT > _contRef;
 };
 
@@ -85,11 +85,13 @@ private:
 	void _grow_up();
 	TBUFIDX GetAvailable();
 
+	
 	std::vector	< PBuffer > _cont;
 	
 	std::mutex				_mtxAvailable;
 	std::list	< TBUFIDX > _available;
 
-
+	//statstics,
+	std::atomic_int			idxLatest;
 };
 
