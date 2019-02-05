@@ -13,7 +13,6 @@ public:
 
 	}
 
-
 	inline bool CheckInUse() { return bInUse; }
 	
 	inline void SetInUse() { bInUse = true; }
@@ -57,6 +56,13 @@ private:
 	static std::vector< PREF_CNT > _contRef;
 };
 
+struct BufInfo
+{
+public:
+	char*	_pBuffer;
+	size_t	_len;
+};
+
 class BufferPool
 {
 public:
@@ -67,6 +73,7 @@ public:
 	BuffAccessor GetNewAccessor();
 
 	char* GetBuffer(BuffAccessor key);
+	BufInfo GetBufInfo(BuffAccessor key);
 	void AccessorDestruct(TBUFIDX key);
 
 	static BufferPool& GetInstance() 
@@ -86,6 +93,7 @@ private:
 	TBUFIDX GetAvailable();
 
 	
+	std::shared_mutex		_mtxCont;
 	std::vector	< PBuffer > _cont;
 	
 	std::mutex				_mtxAvailable;

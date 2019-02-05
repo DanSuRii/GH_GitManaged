@@ -8,5 +8,6 @@ namespace NS_DPNET
 		Network();
 		virtual ~Network();
 	};
+	using PNetwork = std::shared_ptr< Network >;
 }
 

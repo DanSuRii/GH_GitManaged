@@ -1,1 +1,8 @@
-﻿
+﻿  pch.cpp
+  ServerSuites.cpp
+  Generating code
+  0 of 10 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  ServerSuites.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Release\ServerSuites.exe

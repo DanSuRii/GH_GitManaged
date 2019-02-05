@@ -47,6 +47,9 @@ int BuffAccessor::GetRefRemain(TBUFIDX idx)
 	assert(nullptr != _contRef[idx]);
 	assert(idx <= _contRef.size());
 
+	if (nullptr == _contRef[idx])
+		return -1;
+
 	return *(_contRef[idx]);
 }
 
@@ -64,7 +67,9 @@ void BuffAccessor::IncreaseRef()
 
 	if (nullptr == _contRef[_idx])
 	{
-		std::shared_lock< decltype(BuffAccessor::_mtxCont) > grd(BuffAccessor::_mtxCont);
+		//it is possible to perform twice from anywhere
+		//then for a consistancy, changed from shared_lock -> unique_lock
+		std::unique_lock< decltype(BuffAccessor::_mtxCont) > grd(BuffAccessor::_mtxCont);
 		if (nullptr == _contRef[_idx])
 		{
 			_contRef[_idx] = New< decltype(_contRef)::value_type::element_type >();
@@ -109,9 +114,15 @@ BuffAccessor BufferPool::GetNewAccessor()
 
 char * BufferPool::GetBuffer(BuffAccessor key)
 {
+	BufInfo bufInfo = GetBufInfo(key);
+	return bufInfo._pBuffer;
+}
+
+BufInfo BufferPool::GetBufInfo(BuffAccessor key)
+{
 	assert(nullptr != _cont[key.GetIdx()]);
 	auto buffInfo = _cont[key.GetIdx()]->GetBuffer();
-	return buffInfo.second;
+	return BufInfo{ buffInfo.second, buffInfo.first };
 }
 
 void BufferPool::AccessorDestruct(TBUFIDX key)
@@ -159,7 +170,10 @@ void BufferPool::_grow_up()
 	auto firstAvail = _cont.size();
 	//growth container up
 	//_cont.reserve(_cont.size() * 2);
-	_cont.resize(_cont.size() * 2);
+	{
+		std::unique_lock<decltype(_mtxCont)> grd(_mtxCont);
+		_cont.resize(_cont.size() * 2);
+	}
 	
 	auto end = _cont.size();
 
@@ -200,6 +214,7 @@ TBUFIDX BufferPool::GetAvailable()
 
 	if (nullptr == _cont[ret])
 	{
+		std::shared_lock<decltype(_mtxCont)> grd(_mtxCont);
 		_cont[ret] = New<Buffer>(ret);
 	}
 

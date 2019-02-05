@@ -9,12 +9,13 @@ namespace NS_DPNET
 	{
 	public:
 		IOCP();
-		void ClearIOCPHandle();
-		void ClearAndWaitsThreads();
 		virtual ~IOCP();
 
 		bool Listen( std::string strPort );
 	private:
+		void ClearIOCPHandle();
+		void ClearAndWaitsThreads();
+
 		void WorkerThread();
 
 		bool bInit = false;
@@ -28,4 +29,5 @@ namespace NS_DPNET
 		std::vector< std::thread > _threads;
 		std::list< std::shared_ptr< class Listener > > _listeners;
 	};
+	using PIOCP = std::shared_ptr<IOCP>;
 }

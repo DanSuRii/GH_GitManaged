@@ -5,14 +5,20 @@
 #include <iostream>
 
 #include "network.h"
+#include "IOCPNetwork.h"
 
 class Server
 {
 public:
+	Server()
+	{
+		network = New<NS_DPNET::IOCP>();
+	}
+
 	void Run() {};
 
 private:
-	NS_DPNET::Network network;
+	NS_DPNET::PNetwork network;
 };
 
 int main()

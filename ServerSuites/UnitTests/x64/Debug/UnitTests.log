@@ -1,1 +1,79 @@
-﻿
+﻿  Microsoft (R)-Build-Engine, Version 15.9.21+g9802d43bc3 für .NET Framework
+  Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+  
+  Der Buildvorgang wurde am 05.02.2019 09:16:08 gestartet.
+  Projekt "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" auf Knoten "1" (Standardziele).
+  InitializeBuildStatus:
+    "x64\Debug\SimplIOCPServer.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+  ClCompile:
+    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I\boost\ /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Yc"pch.h" /Fp"x64\Debug\SIOCPServer_x64_Debug.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\SimplIOCPServer.pdb" /Gd /TP /FC /errorReport:queue pch.cpp
+    pch.cpp
+    Alle Ausgaben sind aktuell.
+    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I\boost\ /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"x64\Debug\SIOCPServer_x64_Debug.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\SimplIOCPServer.pdb" /Gd /TP /FC /errorReport:queue AgentDestructor.cpp BufferPool.cpp FIOCP.cpp IOCPNetwork.cpp Logger.cpp network.cpp SimplIOCPServer.cpp utilities.cpp
+    AgentDestructor.cpp
+    BufferPool.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(100): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+            with
+            [
+                _Ty=TBUFIDX
+            ]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(173): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+            with
+            [
+                _Ty=TBUFIDX
+            ]
+    FIOCP.cpp
+    IOCPNetwork.cpp
+    Logger.cpp
+    network.cpp
+    SimplIOCPServer.cpp
+    utilities.cpp
+    Generating Code...
+  Lib:
+    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\Lib.exe /OUT:"lib\SIOCPServer_x64_Debug.lib" /NOLOGO /MACHINE:X64 x64\Debug\AgentDestructor.obj
+    x64\Debug\BufferPool.obj
+    x64\Debug\FIOCP.obj
+    x64\Debug\IOCPNetwork.obj
+    x64\Debug\Logger.obj
+    x64\Debug\network.obj
+    x64\Debug\pch.obj
+    x64\Debug\SimplIOCPServer.obj
+    x64\Debug\utilities.obj
+    SimplIOCPServer.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x64_Debug.lib
+  FinalizeBuildStatus:
+    Die Datei "x64\Debug\SimplIOCPServer.tlog\unsuccessfulbuild" wird gelöscht.
+    Aktualisieren des Timestamps von "x64\Debug\SimplIOCPServer.tlog\SimplIOCPServer.lastbuildstate".
+  Die Erstellung von Projekt "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" ist abgeschlossen (Standardziele).
+  
+  Der Buildvorgang wurde erfolgreich ausgeführt.
+  
+  "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" (Standardziel) (1) ->
+  (ClCompile Ziel) -> 
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(100): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(173): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+  
+      2 Warnung(en)
+      0 Fehler
+  
+  Verstrichene Zeit 00:00:05.47
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.pdb
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x64_Debug.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x64_Release.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x86_Debug.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x86_Release.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\test_x86.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\test_x86_Debug.lib
+          8 Datei(en) kopiert.
+  stdafx.cpp
+  unittest1.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(40): warning C4114: same type qualifier used more than once
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(78): warning C4244: 'initializing': conversion from '_Rep' to 'unsigned int', possible loss of data
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(88): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+     Creating library C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\UnitTests.lib and object C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\UnitTests.exp
+  UnitTests.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\UnitTests.dll

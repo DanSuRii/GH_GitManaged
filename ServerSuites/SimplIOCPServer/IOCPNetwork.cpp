@@ -1,11 +1,13 @@
 #include "pch.h"
 #include "IOCPNetwork.h"
 #include "AgentDestructor.h"
+#include "BufferPool.h"
 
 #include <MSWSock.h>
 #include <WS2tcpip.h>
+#include <cassert>
 
-#define LOOP_THROUGH( exp ) for( decltype( exp ) i = 0 ; i < exp ; ++i ) 
+#define LOOP_THROUGH( exp ) for( decltype( exp ) i = 0 ; i < ( exp ) ; ++i ) 
 
 namespace NS_DPNET
 {
@@ -57,15 +59,28 @@ namespace NS_DPNET
 
 	class IOCtx : public OVERLAPPED
 	{
-
+	public:
 	};
 
 	class AcceptIO : public IOCtx
 	{
 	public:
+		AcceptIO()
+		{
+			if (false == ctx.isValid())
+			{
+				LOG_FN( ", Invalid Socket" );
+				return;
+			}
+		}
+
+		SOCKET GetSock() { return ctx.Get(); }
+		inline BuffAccessor GetBufKey() { return bufKey; }
 	private:
 		SocketCtx ctx;
+		BuffAccessor bufKey = BufferPool::GetInstance().GetNewAccessor();
 	};
+	using PAcceptIO = std::shared_ptr< AcceptIO >;
 
 	class Listener : public ICompletionKey
 	{
@@ -84,9 +99,7 @@ namespace NS_DPNET
 
 		/// it works only firsttime to accept waiting		
 		/// possible to one to N accance waiting
-		void RegistFirstAccept()
-		{
-		}
+		void RegistFirstAccept();
 
 		HANDLE _hIocp;
 		
@@ -94,6 +107,8 @@ namespace NS_DPNET
 		AgentDestructor agt;
 
 		LPFN_ACCEPTEX pfnAcceptEx;
+
+		PAcceptIO pAcceptIO;
 
 		bool bInit = false;
 	};
@@ -173,6 +188,27 @@ namespace NS_DPNET
 
 	Listener::~Listener()
 	{
+	}
+
+	/// it works only firsttime to accept waiting		
+	/// possible to one to N accance waiting
+
+	void Listener::RegistFirstAccept()
+	{
+		assert( nullptr == pAcceptIO );
+		pAcceptIO = New< decltype(pAcceptIO)::element_type >();
+
+		const DWORD dwAddrLen = sizeof(SOCKADDR_STORAGE) + 16;
+		DWORD dwRecvNumBytes(0);
+
+		BufInfo bufInfo = BufferPool::GetInstance().GetBufInfo( pAcceptIO->GetBufKey() );
+
+		pfnAcceptEx(sock.Get(), pAcceptIO->GetSock()
+			, bufInfo._pBuffer
+			, bufInfo._len - (2 * dwAddrLen)
+			, dwAddrLen, dwAddrLen
+			, &dwRecvNumBytes
+			, pAcceptIO.get());
 	}
 
 	class SystemInfo
@@ -272,4 +308,4 @@ namespace NS_DPNET
 		dtorAgt.Reg(fn);
 	}
 
-}
+} //NS_DPNET
