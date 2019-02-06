@@ -22,8 +22,15 @@ namespace NS_DPNET
 				LOG_FN( ", socket() failed: ", WSAGetLastError() );
 				return ;
 			}
-
 		}
+		//We deleted copy constructor, although there is possible to Get() method after closesocket()
+		SocketCtx(SocketCtx& rhs) = delete;
+		SocketCtx(SocketCtx&& rhs)
+		{
+			this->_sock = rhs._sock;
+			rhs._sock = INVALID_SOCKET;
+		}
+
 		~SocketCtx()
 		{
 			ClearSocket();
@@ -46,20 +53,16 @@ namespace NS_DPNET
 		SOCKET _sock;
 	};
 
-	class ICompletionKey
-	{
-	public:
-	};
-
-	class ClientCtx : public ICompletionKey
-	{
-
-	};
-
 
 	class IOCtx : public OVERLAPPED
 	{
 	public:
+	};
+
+	template<class Derived>
+	class IOStaticBinder : public IOCtx
+	{
+
 	};
 
 	class AcceptIO : public IOCtx
@@ -82,6 +85,28 @@ namespace NS_DPNET
 	};
 	using PAcceptIO = std::shared_ptr< AcceptIO >;
 
+	class ReadIO : public IOCtx
+	{
+	public:
+	};
+
+	class WriteIO : public IOCtx
+	{
+	public:
+	};
+
+	class ICompletionKey
+	{
+	public:
+	};
+
+	class ClientCtx : public ICompletionKey
+	{
+	public:
+	private:
+	};
+
+
 	class Listener : public ICompletionKey
 	{
 	public:
@@ -94,6 +119,7 @@ namespace NS_DPNET
 		inline bool IsValid(HANDLE hIocp) {
 			return (hIocp != NULL && hIocp != INVALID_HANDLE_VALUE);
 		}		
+		
 
 	private:
 
@@ -293,12 +319,14 @@ namespace NS_DPNET
 		while(true)
 		{
 			DWORD dwIOSize(0);
-			ClientCtx* pCtxt(nullptr);
-			OVERLAPPED* pOverlapped(nullptr);
-			BOOL bSuccess = ::GetQueuedCompletionStatus(hIOCP, &dwIOSize, (PULONG_PTR)&pCtxt, &pOverlapped, INFINITE);
+			ICompletionKey* pCtxt(nullptr);
+			IOCtx* pOverlapped(nullptr);
+			BOOL bSuccess = ::GetQueuedCompletionStatus(hIOCP, &dwIOSize, (PULONG_PTR)&pCtxt, (LPOVERLAPPED*)&pOverlapped, INFINITE);
 			if (FALSE == bSuccess) {
 				LOG_FN(",GetQueuedCompletionStatus() failed: ", WSAGetLastError() );
 			}
+
+			dwIOSize, pCtxt, pOverlapped;
 		
 		}
 	}
