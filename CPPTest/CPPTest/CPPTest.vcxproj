@@ -167,6 +167,7 @@
     <ClCompile Include="sharedtoshared.cpp" />
     <ClCompile Include="simpleTests.cpp" />
     <ClCompile Include="TestGenerates.cpp" />
+    <ClCompile Include="VisitorDispatcher.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

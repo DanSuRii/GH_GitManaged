@@ -1,3 +1,2 @@
-﻿  CtxConsistency.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctxconsistency.cpp(412): warning C4307: '*': integral constant overflow
-  CPPTest.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\CPPTest\Debug\CPPTest.exe
+﻿  VisitorDispatcher.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\visitordispatcher.cpp(61): warning C4307: '*': integral constant overflow

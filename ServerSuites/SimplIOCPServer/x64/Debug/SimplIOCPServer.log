@@ -1,3 +1,4 @@
 ﻿  IOCPNetwork.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(219): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(306): error C2102: '&' requires l-value
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(237): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
+  LINK : C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\SimplIOCPServer.exe not found or not built by the last incremental link; performing full link
+  SimplIOCPServer.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\SimplIOCPServer.exe

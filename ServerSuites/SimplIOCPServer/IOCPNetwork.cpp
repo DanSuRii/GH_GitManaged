@@ -58,12 +58,7 @@ namespace NS_DPNET
 	{
 	public:
 	};
-
-	template<class Derived>
-	class IOStaticBinder : public IOCtx
-	{
-
-	};
+	
 
 	class AcceptIO : public IOCtx
 	{

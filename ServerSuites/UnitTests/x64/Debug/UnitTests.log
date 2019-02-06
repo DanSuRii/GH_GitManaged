@@ -1,7 +1,7 @@
 ﻿  Microsoft (R)-Build-Engine, Version 15.9.21+g9802d43bc3 für .NET Framework
   Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
   
-  Der Buildvorgang wurde am 06.02.2019 09:06:04 gestartet.
+  Der Buildvorgang wurde am 06.02.2019 15:00:58 gestartet.
   Projekt "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" auf Knoten "1" (Standardziele).
   InitializeBuildStatus:
     "x64\Debug\SimplIOCPServer.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
@@ -25,7 +25,7 @@ c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\buffer
             ]
     FIOCP.cpp
     IOCPNetwork.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(218): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(237): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
     Logger.cpp
     network.cpp
     SimplIOCPServer.cpp
@@ -53,12 +53,12 @@ c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpne
   (ClCompile Ziel) -> 
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(102): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(181): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(218): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(237): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
   
       3 Warnung(en)
       0 Fehler
   
-  Verstrichene Zeit 00:00:05.37
+  Verstrichene Zeit 00:00:08.96
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.lib
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.pdb
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x64_Debug.lib
@@ -77,5 +77,6 @@ c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cp
           ]
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(90): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+  LINK : C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\UnitTests.dll not found or not built by the last incremental link; performing full link
      Creating library C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\UnitTests.lib and object C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\UnitTests.exp
   UnitTests.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\UnitTests.dll
