@@ -17,10 +17,10 @@ namespace NS_DPNET
 		SocketCtx()
 		{
 			_sock = ::socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-			if( INVALID_SOCKET == _sock )
+			if (INVALID_SOCKET == _sock)
 			{
-				LOG_FN( ", socket() failed: ", WSAGetLastError() );
-				return ;
+				LOG_FN(", socket() failed: ", WSAGetLastError());
+				return;
 			}
 		}
 		//We deleted copy constructor, although there is possible to Get() method after closesocket()
@@ -53,12 +53,37 @@ namespace NS_DPNET
 		SOCKET _sock;
 	};
 
+	enum EIOTyp
+	{
+		EIO_Invalid = -1,
+		EIO_Accept,
+		EIO_Read,
+		EIO_Write,
+
+		EIO_CNT
+	};
 
 	class IOCtx : public OVERLAPPED
 	{
 	public:
+		EIOTyp GetTyp() { return EIO_Invalid; }
+
+		//virtual void RequestHandleSelf(ICompletionKey& Receiver) = 0;
 	};
-	
+
+/*
+	template< class Derived  >
+	class IOCtx_CRTP : public IOCtx
+	{
+	public:
+		// Inherited via IOCtx
+		virtual void RequestHandleSelf(ICompletionKey & Receiver) override
+		{
+			Receiver.HandleIO(static_cast<Derived*>(this));
+		}
+	};
+*/
+
 
 	class AcceptIO : public IOCtx
 	{
@@ -67,7 +92,7 @@ namespace NS_DPNET
 		{
 			if (false == ctx.isValid())
 			{
-				LOG_FN( ", Invalid Socket" );
+				LOG_FN(", Invalid Socket");
 				return;
 			}
 		}
@@ -105,7 +130,7 @@ namespace NS_DPNET
 	class Listener : public ICompletionKey
 	{
 	public:
-		Listener( HANDLE hIocp, std::string strPort );
+		Listener(HANDLE hIocp, std::string strPort);
 		~Listener();
 
 
@@ -113,8 +138,8 @@ namespace NS_DPNET
 		inline operator bool() { return isInit(); }
 		inline bool IsValid(HANDLE hIocp) {
 			return (hIocp != NULL && hIocp != INVALID_HANDLE_VALUE);
-		}		
-		
+		}
+
 
 	private:
 
@@ -123,7 +148,7 @@ namespace NS_DPNET
 		void RegistFirstAccept();
 
 		HANDLE _hIocp;
-		
+
 		SocketCtx sock;
 		AgentDestructor agt;
 
@@ -134,14 +159,14 @@ namespace NS_DPNET
 		bool bInit = false;
 	};
 
-	Listener::Listener( HANDLE hIocp, std::string strPort )
+	Listener::Listener(HANDLE hIocp, std::string strPort)
 		: _hIocp(hIocp)
 	{
 		CHECK_RETURN(false == IsValid(hIocp), "IOCP parameter invalid: ", hIocp);
 		CHECK_RETURN(false == NS_DPUTIL::CheckPortStringToUseable(strPort), "Port parameter invalid: ", strPort);
-		CHECK_RETURN(false == sock.isValid(), "listen socket ctx is invalid.");		
+		CHECK_RETURN(false == sock.isValid(), "listen socket ctx is invalid.");
 
-		struct addrinfo hints{0};
+		struct addrinfo hints { 0 };
 		struct addrinfo *addrlocal(nullptr);
 
 		LINGER linger;
@@ -154,9 +179,9 @@ namespace NS_DPNET
 		hints.ai_socktype = SOCK_STREAM;
 		hints.ai_protocol = IPPROTO_IP;
 
-		if ( 0 != ::getaddrinfo( NULL, strPort.c_str(), &hints, &addrlocal ))
+		if (0 != ::getaddrinfo(NULL, strPort.c_str(), &hints, &addrlocal))
 		{
-			LOG_FN( ", getaddrinfo() failed with error: ", WSAGetLastError() );
+			LOG_FN(", getaddrinfo() failed with error: ", WSAGetLastError());
 			return;
 		}
 
@@ -167,25 +192,25 @@ namespace NS_DPNET
 		}
 
 		NS_DPUTIL::RAIIStack raiiS;
-		raiiS.Push([&] {freeaddrinfo(addrlocal);});
+		raiiS.Push([&] {freeaddrinfo(addrlocal); });
 
 		int nRet(0);
 
-		nRet = ::bind(sock.Get(), addrlocal->ai_addr, (int) addrlocal->ai_addrlen);
-		if( SOCKET_ERROR == nRet )
+		nRet = ::bind(sock.Get(), addrlocal->ai_addr, (int)addrlocal->ai_addrlen);
+		if (SOCKET_ERROR == nRet)
 		{
 			LOG_FN(", bind() failed: ", WSAGetLastError());
 			return;
 		}
 
 		nRet = ::listen(sock.Get(), 5);
-		if( nRet == SOCKET_ERROR )
-		{ 
-			LOG_FN( ", listen() failed: ", WSAGetLastError() );
+		if (nRet == SOCKET_ERROR)
+		{
+			LOG_FN(", listen() failed: ", WSAGetLastError());
 			return;
 		}
 
-		HANDLE hRes = ::CreateIoCompletionPort( (HANDLE)sock.Get(), _hIocp, (DWORD_PTR)this, 0 );
+		HANDLE hRes = ::CreateIoCompletionPort((HANDLE)sock.Get(), _hIocp, (DWORD_PTR)this, 0);
 		if (NULL == hRes)
 		{
 			LOG_FN(", CreateIoCompletionPort() failed to join IOCP : ", GetLastError());
@@ -197,7 +222,7 @@ namespace NS_DPNET
 
 		nRet = ::WSAIoctl(
 			sock.Get(), SIO_GET_EXTENSION_FUNCTION_POINTER, &acceptex_guid, sizeof(acceptex_guid)
-			, &pfnAcceptEx, sizeof(pfnAcceptEx), &dwBytes, NULL, NULL );
+			, &pfnAcceptEx, sizeof(pfnAcceptEx), &dwBytes, NULL, NULL);
 
 		if (nRet == SOCKET_ERROR) {
 			LOG_FN(", WSAIoctl() failed to load AcceptEx : ", WSAGetLastError());
@@ -216,13 +241,13 @@ namespace NS_DPNET
 
 	void Listener::RegistFirstAccept()
 	{
-		assert( nullptr == pAcceptIO );
+		assert(nullptr == pAcceptIO);
 		pAcceptIO = New< decltype(pAcceptIO)::element_type >();
 
 		const DWORD dwAddrLen = sizeof(SOCKADDR_STORAGE) + 16;
 		DWORD dwRecvNumBytes(0);
 
-		BufInfo bufInfo = BufferPool::GetInstance().GetBufInfo( pAcceptIO->GetBufKey() );
+		BufInfo bufInfo = BufferPool::GetInstance().GetBufInfo(pAcceptIO->GetBufKey());
 
 		pfnAcceptEx(sock.Get(), pAcceptIO->GetSock()
 			, bufInfo._pBuffer
@@ -235,7 +260,7 @@ namespace NS_DPNET
 	class SystemInfo
 	{
 		SystemInfo()
-		{			
+		{
 			::GetSystemInfo(&_sysinfo);
 		}
 
@@ -247,25 +272,25 @@ namespace NS_DPNET
 		}
 	private:
 		SYSTEM_INFO	_sysinfo;
-	}& gSysInfo( SystemInfo::GetInstance() );
+	}&gSysInfo(SystemInfo::GetInstance());
 
 
 	IOCP::IOCP()
 	{
-		hIOCP = ::CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, NULL, 0 );
-		if( NULL == hIOCP )
+		hIOCP = ::CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, NULL, 0);
+		if (NULL == hIOCP)
 		{
-			LOG_FN( ", CreateIoCompletionPort() failure: ", ::GetLastError() );
+			LOG_FN(", CreateIoCompletionPort() failure: ", ::GetLastError());
 			return;
 		}
 		RegDtor([&] { ClearIOCPHandle(); });
 
 		DWORD cpuCnt = gSysInfo.GetCpuCnt();
-		for(decltype(cpuCnt) i = 0; i < cpuCnt; ++i)
+		for (decltype(cpuCnt) i = 0; i < cpuCnt; ++i)
 		{
-			_threads.emplace_back( &IOCP::WorkerThread, this );
+			_threads.emplace_back(&IOCP::WorkerThread, this);
 		}
-		
+
 		RegDtor([&] { ClearAndWaitsThreads(); });
 
 
@@ -304,25 +329,30 @@ namespace NS_DPNET
 	bool IOCP::Listen(std::string strPort)
 	{
 		//if portnumber already uses, do not create listener
-		auto pListener = New<Listener>( hIOCP, strPort );
+		auto pListener = New<Listener>(hIOCP, strPort);
 
 		return (nullptr == pListener || *pListener);
 	}
 
 	void IOCP::WorkerThread()
 	{
-		while(true)
+		while (true)
 		{
 			DWORD dwIOSize(0);
 			ICompletionKey* pCtxt(nullptr);
 			IOCtx* pOverlapped(nullptr);
 			BOOL bSuccess = ::GetQueuedCompletionStatus(hIOCP, &dwIOSize, (PULONG_PTR)&pCtxt, (LPOVERLAPPED*)&pOverlapped, INFINITE);
 			if (FALSE == bSuccess) {
-				LOG_FN(",GetQueuedCompletionStatus() failed: ", WSAGetLastError() );
+				LOG_FN(",GetQueuedCompletionStatus() failed: ", WSAGetLastError());
 			}
 
 			dwIOSize, pCtxt, pOverlapped;
-		
+
+			if (pOverlapped->GetTyp() == EIOTyp::EIO_Accept)
+			{
+
+			}
+
 		}
 	}
 

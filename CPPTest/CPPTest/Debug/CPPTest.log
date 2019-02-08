@@ -1,2 +1,3 @@
-﻿  VisitorDispatcher.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\visitordispatcher.cpp(61): warning C4307: '*': integral constant overflow
+﻿  MsgDispatch_Third.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\msgdispatch_third.cpp(139): warning C4307: '*': integral constant overflow
+  CPPTest.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\CPPTest\Debug\CPPTest.exe

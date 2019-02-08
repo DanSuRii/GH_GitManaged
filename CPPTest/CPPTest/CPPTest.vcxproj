@@ -156,8 +156,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CtxConsistency.cpp" />
+    <ClCompile Include="Handlemsg.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CTest.cpp" />
+    <ClCompile Include="MsgDispatch_Third.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -166,8 +168,10 @@
     </ClCompile>
     <ClCompile Include="sharedtoshared.cpp" />
     <ClCompile Include="simpleTests.cpp" />
+    <ClCompile Include="simpleTests_2.cpp" />
     <ClCompile Include="TestGenerates.cpp" />
     <ClCompile Include="VisitorDispatcher.cpp" />
+    <ClCompile Include="VisitorDispatcher2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
