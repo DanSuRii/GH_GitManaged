@@ -3,11 +3,10 @@
 
 #include <typeindex>
 #include <unordered_map>
+#include <tuple>
 
 namespace NS_MSGDISPATCHER_THIRD
 {
-
-
 	class ICompletionKey
 	{
 	public:
@@ -88,9 +87,7 @@ namespace NS_MSGDISPATCHER_THIRD
 #endif // false //JUST IN CASE USES CHECK
 
 				return NothingHandler;
-			}
-
-			
+			}		
 
 			return iter->second;
 		}

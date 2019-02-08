@@ -1,3 +1,43 @@
-﻿  MsgDispatch_Third.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\msgdispatch_third.cpp(139): warning C4307: '*': integral constant overflow
+﻿  pch.cpp
+  CtxConsistency.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctxconsistency.cpp(412): warning C4307: '*': integral constant overflow
+  Handlemsg.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\handlemsg.cpp(164): warning C4307: '*': integral constant overflow
+  main.cpp
+  CTest.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(11): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(12): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(13): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(14): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(15): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(16): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(17): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(18): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(19): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(20): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(21): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(22): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(23): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(24): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(28): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\ctest.cpp(29): warning C4307: '*': integral constant overflow
+  MsgDispatch_Third.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\msgdispatch_third.cpp(148): warning C4307: '*': integral constant overflow
+  sharedtoshared.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\sharedtoshared.cpp(16): warning C4307: '*': integral constant overflow
+  simpleTests.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\simpletests.cpp(10): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\simpletests.cpp(43): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\simpletests.cpp(101): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\simpletests.cpp(182): warning C4307: '*': integral constant overflow
+  simpleTests_2.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\simpletests_2.cpp(136): warning C4307: '*': integral constant overflow
+  TestGenerates.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\testgenerates.cpp(41): warning C4307: '*': integral constant overflow
+  VisitorDispatcher.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\visitordispatcher.cpp(220): warning C4307: '*': integral constant overflow
+  VisitorDispatcher2.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\visitordispatcher2.cpp(180): warning C4307: '*': integral constant overflow
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\visitordispatcher2.cpp(187): warning C4101: 'visitor': unreferenced local variable
+  Generating Code...
   CPPTest.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\CPPTest\Debug\CPPTest.exe

@@ -7,6 +7,9 @@
 #include <WS2tcpip.h>
 #include <cassert>
 
+#include <typeindex>
+#include <unordered_map>
+
 #define LOOP_THROUGH( exp ) for( decltype( exp ) i = 0 ; i < ( exp ) ; ++i ) 
 
 namespace NS_DPNET
@@ -118,12 +121,94 @@ namespace NS_DPNET
 	class ICompletionKey
 	{
 	public:
+		virtual void HandleIO(IOCtx*) = 0;
 	};
+
+	template< class _MyT >
+	class IOMsgDispatcher
+	{
+	public:
+		using MyFunctionT = std::function< void(_MyT*, void*) >;
+
+		template< class _FnT >
+		void Regist(std::type_index idx, _FnT function)
+		{
+			_mapCaller[idx] = function;
+		}
+
+		auto GetFn( std::type_index idx )
+		{
+			MyFunctionT invalidFn;
+			auto iter = _mapCaller.find(idx);
+			if (iter == _mapCaller.end())
+			{
+				return invalidFn;
+			}
+
+			return iter->second;
+		}
+	private:
+		std::unordered_map< std::type_index  , MyFunctionT > _mapCaller;
+	};
+
+
 
 	class ClientCtx : public ICompletionKey
 	{
+		void Handle(WriteIO& ioWrite)
+		{
+			LOG_FN(", was been occurred");
+		}
+		void Handle(ReadIO& ioRead);
+
+		template<class _TArg>
+		auto GetCallerFunction()
+		{
+			return [](ClientCtx* pThis, void* rParam) { auto param = (_TArg*)rParam; pThis->Handle(*param);  };
+		}
+
+		template< class _TArg, class _TDispatcher  >
+		void Regist(_TDispatcher& dispatcher )
+		{
+			dispatcher.Regist(typeid(_TArg), GetCallerFunction<_TArg>());
+		}
+#if false //it doesnt work
+		template<class _TArg>
+		auto GetInitalizeList()
+		{
+			return { typeid(_TArg), GetCallerFunction<_TArg>() };
+		}
+
+#endif // false //it doesnt work
+
 	public:
+		ClientCtx()
+		{
+			IOMsgDispatcher<ClientCtx> dispatcher;
+			//dispatcher.Regist(typeid(WriteIO), [](ClientCtx* pThis, void* rParam) { auto param = (_TArg*)rParam; pThis->Handle(*param);  });
+			//dispatcher.Regist(typeid(WriteIO), GetCallerFunction<WriteIO>());
+			Regist<WriteIO>(dispatcher);
+			Regist<ReadIO>(dispatcher);			
+		}
 	private:
+
+		IOMsgDispatcher<ClientCtx> GetDispatcher()
+		{
+			return IOMsgDispatcher<ClientCtx>();
+		}
+
+		auto GetHandlerFn( std::type_index idx )
+		{
+			return GetDispatcher().GetFn(idx);
+		}
+
+		// Inherited via ICompletionKey
+		virtual void HandleIO(IOCtx * pIOCtx) 
+		{
+			CHECK_RETURN(nullptr == pIOCtx, "nullptr failed");
+			auto fn = GetHandlerFn( typeid(*pIOCtx) );
+			fn(this, pIOCtx);
+		}
 	};
 
 
@@ -142,6 +227,7 @@ namespace NS_DPNET
 
 
 	private:
+		void Handle(AcceptIO& ioAccept);
 
 		/// it works only firsttime to accept waiting		
 		/// possible to one to N accance waiting
@@ -157,6 +243,18 @@ namespace NS_DPNET
 		PAcceptIO pAcceptIO;
 
 		bool bInit = false;
+
+
+
+		// Inherited via ICompletionKey
+		virtual void HandleIO(IOCtx * pIoCtx) override
+		{
+			CHECK_RETURN( nullptr == pIoCtx, ", Invalid IOCtx" );
+			CHECK_RETURN(std::type_index(typeid(AcceptIO)) != std::type_index(typeid(*pIoCtx)), ", Listener only takes AcceptIO");		
+
+			auto acceptIO = static_cast<AcceptIO*>(pIoCtx);
+			Handle( *acceptIO );
+		}
 	};
 
 	Listener::Listener(HANDLE hIocp, std::string strPort)
@@ -229,6 +327,8 @@ namespace NS_DPNET
 			return;
 		}
 
+		RegistFirstAccept();
+
 		bInit = true;
 	}
 
@@ -238,6 +338,18 @@ namespace NS_DPNET
 
 	/// it works only firsttime to accept waiting		
 	/// possible to one to N accance waiting
+
+	void Listener::Handle(AcceptIO & ioAccept)
+	{
+		ioAccept.GetBufKey();
+
+		SOCKET thisSock = sock.Get();
+		int nRet = ::setsockopt( ioAccept.GetSock(), SOL_SOCKET, SO_UPDATE_ACCEPT_CONTEXT, (char*)&thisSock, sizeof(thisSock) );
+		if (SOCKET_ERROR == nRet)
+		{
+			LOG_FN();
+		}
+	}
 
 	void Listener::RegistFirstAccept()
 	{
@@ -348,10 +460,25 @@ namespace NS_DPNET
 
 			dwIOSize, pCtxt, pOverlapped;
 
-			if (pOverlapped->GetTyp() == EIOTyp::EIO_Accept)
+			if (nullptr == pCtxt)
 			{
-
+				LOG_FN( ", ThID: ", std::this_thread::get_id() , ", occured break. Exit thread" );
+				break;
 			}
+
+			//HandleClientExit
+			{
+				if (std::type_index(typeid(AcceptIO)) != std::type_index(typeid(*pOverlapped)))
+				{
+					if (!bSuccess || (bSuccess && (0 == dwIOSize)))
+					{
+						//TODO: remove this context, if not ... it will be leak :)
+						continue;
+					}
+				}
+			}
+
+			pCtxt->HandleIO(pOverlapped);
 
 		}
 	}

@@ -1,7 +1,7 @@
 ﻿  Microsoft (R)-Build-Engine, Version 15.9.21+g9802d43bc3 für .NET Framework
   Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
   
-  Der Buildvorgang wurde am 06.02.2019 15:00:58 gestartet.
+  Der Buildvorgang wurde am 08.02.2019 16:53:03 gestartet.
   Projekt "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" auf Knoten "1" (Standardziele).
   InitializeBuildStatus:
     "x64\Debug\SimplIOCPServer.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
@@ -25,7 +25,7 @@ c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\buffer
             ]
     FIOCP.cpp
     IOCPNetwork.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(237): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(369): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
     Logger.cpp
     network.cpp
     SimplIOCPServer.cpp
@@ -53,12 +53,12 @@ c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpne
   (ClCompile Ziel) -> 
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(102): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(181): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(237): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(369): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
   
       3 Warnung(en)
       0 Fehler
   
-  Verstrichene Zeit 00:00:08.96
+  Verstrichene Zeit 00:00:06.13
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.lib
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.pdb
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x64_Debug.lib
@@ -69,14 +69,21 @@ c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpne
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\test_x86_Debug.lib
           8 Datei(en) kopiert.
   unittest1.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(41): warning C4114: same type qualifier used more than once
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(79): warning C4244: 'initializing': conversion from '_Rep' to 'unsigned int', possible loss of data
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(43): warning C4114: same type qualifier used more than once
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(81): warning C4244: 'initializing': conversion from '_Rep' to 'unsigned int', possible loss of data
           with
           [
               _Rep=std::chrono::system_clock::rep
           ]
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(90): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(92): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
-  LINK : C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\UnitTests.dll not found or not built by the last incremental link; performing full link
-     Creating library C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\UnitTests.lib and object C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\UnitTests.exp
-  UnitTests.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\UnitTests.dll
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(120): warning C4114: same type qualifier used more than once
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(160): warning C4244: 'initializing': conversion from '_Rep' to 'unsigned int', possible loss of data
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\logger.h(45): error C2872: 'Logger': ambiguous symbol
+  c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\logger.h(10): note: could be 'Logger'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\auxiliary\vs\unittest\include\cppunittestlogger.h(18): note: or       'Microsoft::VisualStudio::CppUnitTestFramework::Logger'
+  c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(166): note: see reference to function template instantiation 'void Log<const char(&)[119],const char*&,const char*&,const char*&>(const char (&)[119],const char *&,const char *&,const char *&)' being compiled

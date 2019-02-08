@@ -14,6 +14,8 @@
 #include "../SimplIOCPServer/constants.h"
 #include "../SimplIOCPServer/BufferPool.h"
 
+#include "../SimplIOCPServer/Logger.h"
+
 #include <random>
 
 #include <fstream>
@@ -108,5 +110,71 @@ namespace UnitTests
 			//Assert::AreEqual( bufferPool.GetAvailableCnt() , bufferPool.GetContainerLen() );
 		}
 
+	};
+
+	TEST_CLASS(LOG_THROUPUT_TEST)
+	{
+		TEST_METHOD(Method1)
+		{
+			const int MAX_THREAD_COUNT = 8;
+			const char const * pStrs[]{
+	"	8Q77AIFCqjdD1Ly5e6aq	",
+	"	ccZD3iqWiKMaGGfFjzc3	",
+	"	mMux9toqKtDSmlhLqx8k	",
+	"	lKOXNm4VzYs3O48KFVoP	",
+	"	fOLix3P6TaUjqanyIVtQ	",
+	"	DZ4ho30NLaLaYpANvXBb	",
+	"	btxHhkoYdfPVn2eONXsl	",
+	"	5NppFIBdYsospPnVqTRr	",
+	"	1QCQi7LhkphZMocOWjSH	",
+	"	ia3YAB3KURYceLPMUj2v	",
+	"	LSNWiyGzdFRi4i2JTz23	",
+	"	d7BjAvqNHAk5qJDys3UZ	",
+	"	LtblMFMfSIk0wdiR3VpR	",
+	"	mndSbaqFQS3bWtBm2yjr	",
+	"	tLdRsfBJ79Owb6XRzE6i	",
+	"	lhe5oxDwkDmPKFFRyWv7	",
+	"	22qbcUHDoaAQHpBxMj1f	",
+	"	3VfzKi4h1dT1y4KDnbhY	",
+	"	MtRe6SHencJZNu1azuKm	",
+	"	2GBdYamRVMs6NYNf6zug	",
+	"	FNIqs8Wn2AiHiTNCT4Fx	",
+	"	uZ1BasFBjA4h45Er4Nv9	",
+	"	L1WtnLbXWon0aIb402cK	",
+	"	mrlFsCprKhKXZJiPNYlO	",
+	"	5PRoq1seCUNdGxzGY9WM	",
+	"	7eeoH3PaVblD2AXvTL58	",
+	"	EMVZF9GnBxACzVflxgpI	",
+	"	B8PEBFFeqv8kGRwEcJqL	",
+	"	5QNsjOqttJdaFJYjTBeM	",
+	"	2TtaxDPK9OCXPRYdN04E	",
+			};
+
+
+			std::vector< std::thread > threads;
+			for (int i = 0; i < MAX_THREAD_COUNT; ++i) {
+				threads.emplace_back( [&] 
+				{
+					int nTryCnt = 70000;
+
+					unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+					std::mt19937_64 generator(seed);
+
+
+					while(--nTryCnt)
+					{
+						LOG_FN(pStrs[generator() % _countof(pStrs)], pStrs[generator() % _countof(pStrs)], pStrs[generator() % _countof(pStrs)]);
+					}
+
+					std::this_thread::yield();
+				});
+			}
+
+			for (auto& cur : threads)
+			{
+				cur.join();
+			}
+
+		}
 	};
 }
