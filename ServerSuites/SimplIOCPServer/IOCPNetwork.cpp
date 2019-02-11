@@ -14,204 +14,6 @@
 
 namespace NS_DPNET
 {
-	class SocketCtx
-	{
-	public:
-		SocketCtx()
-		{
-			_sock = ::socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-			if (INVALID_SOCKET == _sock)
-			{
-				LOG_FN(", socket() failed: ", WSAGetLastError());
-				return;
-			}
-		}
-		//We deleted copy constructor, although there is possible to Get() method after closesocket()
-		SocketCtx(SocketCtx& rhs) = delete;
-		SocketCtx(SocketCtx&& rhs)
-		{
-			this->_sock = rhs._sock;
-			rhs._sock = INVALID_SOCKET;
-		}
-
-		~SocketCtx()
-		{
-			ClearSocket();
-		}
-
-		bool isValid() { return _sock != INVALID_SOCKET; }
-		bool ClearSocket()
-		{
-			if (isValid())
-			{
-				::closesocket(_sock);
-				_sock = INVALID_SOCKET;
-			}
-
-			return true;
-		}
-
-		SOCKET Get() { return _sock; }
-	private:
-		SOCKET _sock;
-	};
-
-	enum EIOTyp
-	{
-		EIO_Invalid = -1,
-		EIO_Accept,
-		EIO_Read,
-		EIO_Write,
-
-		EIO_CNT
-	};
-
-	class IOCtx : public OVERLAPPED
-	{
-	public:
-		EIOTyp GetTyp() { return EIO_Invalid; }
-
-		//virtual void RequestHandleSelf(ICompletionKey& Receiver) = 0;
-	};
-
-/*
-	template< class Derived  >
-	class IOCtx_CRTP : public IOCtx
-	{
-	public:
-		// Inherited via IOCtx
-		virtual void RequestHandleSelf(ICompletionKey & Receiver) override
-		{
-			Receiver.HandleIO(static_cast<Derived*>(this));
-		}
-	};
-*/
-
-
-	class AcceptIO : public IOCtx
-	{
-	public:
-		AcceptIO()
-		{
-			if (false == ctx.isValid())
-			{
-				LOG_FN(", Invalid Socket");
-				return;
-			}
-		}
-
-		SOCKET GetSock() { return ctx.Get(); }
-		inline BuffAccessor GetBufKey() { return bufKey; }
-	private:
-		SocketCtx ctx;
-		BuffAccessor bufKey = BufferPool::GetInstance().GetNewAccessor();
-	};
-	using PAcceptIO = std::shared_ptr< AcceptIO >;
-
-	class ReadIO : public IOCtx
-	{
-	public:
-	};
-
-	class WriteIO : public IOCtx
-	{
-	public:
-	};
-
-	class ICompletionKey
-	{
-	public:
-		virtual void HandleIO(IOCtx*) = 0;
-	};
-
-	template< class _MyT >
-	class IOMsgDispatcher
-	{
-	public:
-		using MyFunctionT = std::function< void(_MyT*, void*) >;
-
-		template< class _FnT >
-		void Regist(std::type_index idx, _FnT function)
-		{
-			_mapCaller[idx] = function;
-		}
-
-		auto GetFn( std::type_index idx )
-		{
-			MyFunctionT invalidFn;
-			auto iter = _mapCaller.find(idx);
-			if (iter == _mapCaller.end())
-			{
-				return invalidFn;
-			}
-
-			return iter->second;
-		}
-	private:
-		std::unordered_map< std::type_index  , MyFunctionT > _mapCaller;
-	};
-
-
-
-	class ClientCtx : public ICompletionKey
-	{
-		void Handle(WriteIO& ioWrite)
-		{
-			LOG_FN(", was been occurred");
-		}
-		void Handle(ReadIO& ioRead);
-
-		template<class _TArg>
-		auto GetCallerFunction()
-		{
-			return [](ClientCtx* pThis, void* rParam) { auto param = (_TArg*)rParam; pThis->Handle(*param);  };
-		}
-
-		template< class _TArg, class _TDispatcher  >
-		void Regist(_TDispatcher& dispatcher )
-		{
-			dispatcher.Regist(typeid(_TArg), GetCallerFunction<_TArg>());
-		}
-#if false //it doesnt work
-		template<class _TArg>
-		auto GetInitalizeList()
-		{
-			return { typeid(_TArg), GetCallerFunction<_TArg>() };
-		}
-
-#endif // false //it doesnt work
-
-	public:
-		ClientCtx()
-		{
-			IOMsgDispatcher<ClientCtx> dispatcher;
-			//dispatcher.Regist(typeid(WriteIO), [](ClientCtx* pThis, void* rParam) { auto param = (_TArg*)rParam; pThis->Handle(*param);  });
-			//dispatcher.Regist(typeid(WriteIO), GetCallerFunction<WriteIO>());
-			Regist<WriteIO>(dispatcher);
-			Regist<ReadIO>(dispatcher);			
-		}
-	private:
-
-		IOMsgDispatcher<ClientCtx> GetDispatcher()
-		{
-			return IOMsgDispatcher<ClientCtx>();
-		}
-
-		auto GetHandlerFn( std::type_index idx )
-		{
-			return GetDispatcher().GetFn(idx);
-		}
-
-		// Inherited via ICompletionKey
-		virtual void HandleIO(IOCtx * pIOCtx) 
-		{
-			CHECK_RETURN(nullptr == pIOCtx, "nullptr failed");
-			auto fn = GetHandlerFn( typeid(*pIOCtx) );
-			fn(this, pIOCtx);
-		}
-	};
-
-
 	class Listener : public ICompletionKey
 	{
 	public:
@@ -247,7 +49,7 @@ namespace NS_DPNET
 
 
 		// Inherited via ICompletionKey
-		virtual void HandleIO(IOCtx * pIoCtx) override
+		virtual void HandleIO(IOCtx * pIoCtx, DWORD dwIOSize) override
 		{
 			CHECK_RETURN( nullptr == pIoCtx, ", Invalid IOCtx" );
 			CHECK_RETURN(std::type_index(typeid(AcceptIO)) != std::type_index(typeid(*pIoCtx)), ", Listener only takes AcceptIO");		
@@ -405,7 +207,8 @@ namespace NS_DPNET
 
 		RegDtor([&] { ClearAndWaitsThreads(); });
 
-
+		eState = ESTAT_AVAILABLE;
+		RegDtor([&] { eState = ESTAT_DESTROY; });
 		bInit = true;
 	}
 
@@ -443,7 +246,14 @@ namespace NS_DPNET
 		//if portnumber already uses, do not create listener
 		auto pListener = New<Listener>(hIOCP, strPort);
 
-		return (nullptr == pListener || *pListener);
+		if (nullptr == pListener || false == (*pListener))
+		{
+			return false;
+		}
+
+		_listeners.push_back(pListener);
+
+		return true;
 	}
 
 	void IOCP::WorkerThread()
@@ -478,7 +288,7 @@ namespace NS_DPNET
 				}
 			}
 
-			pCtxt->HandleIO(pOverlapped);
+			pCtxt->HandleIO(pOverlapped, dwIOSize);
 
 		}
 	}

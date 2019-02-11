@@ -1,7 +1,7 @@
 ﻿  Microsoft (R)-Build-Engine, Version 15.9.21+g9802d43bc3 für .NET Framework
   Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
   
-  Der Buildvorgang wurde am 05.02.2019 09:22:12 gestartet.
+  Der Buildvorgang wurde am 11.02.2019 11:37:30 gestartet.
   Projekt "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" auf Knoten "1" (Standardziele).
   InitializeBuildStatus:
     "x64\Release\SimplIOCPServer.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
@@ -9,35 +9,41 @@
     Alle Ausgaben sind aktuell.
     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I\boost\ /Zi /nologo /W3 /WX- /diagnostics:classic /sdl /O2 /Oi /GL /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Yc"pch.h" /Fp"x64\Release\SIOCPServer_x64_Release.pch" /Fo"x64\Release\\" /Fd"x64\Release\SimplIOCPServer.pdb" /Gd /TP /FC /errorReport:queue pch.cpp
     pch.cpp
-    Alle Ausgaben sind aktuell.
-    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I\boost\ /Zi /nologo /W3 /WX- /diagnostics:classic /sdl /O2 /Oi /GL /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"x64\Release\SIOCPServer_x64_Release.pch" /Fo"x64\Release\\" /Fd"x64\Release\SimplIOCPServer.pdb" /Gd /TP /FC /errorReport:queue AgentDestructor.cpp BufferPool.cpp FIOCP.cpp IOCPNetwork.cpp Logger.cpp network.cpp SimplIOCPServer.cpp utilities.cpp
+    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I\boost\ /Zi /nologo /W3 /WX- /diagnostics:classic /sdl /O2 /Oi /GL /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"x64\Release\SIOCPServer_x64_Release.pch" /Fo"x64\Release\\" /Fd"x64\Release\SimplIOCPServer.pdb" /Gd /TP /FC /errorReport:queue AgentDestructor.cpp BufferPool.cpp ClientContext.cpp FIOCP.cpp IOCPNetwork.cpp IOCtx.cpp Logger.cpp network.cpp SimplIOCPServer.cpp SocketCtx.cpp utilities.cpp
     AgentDestructor.cpp
     BufferPool.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(100): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(102): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
             with
             [
                 _Ty=TBUFIDX
             ]
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(173): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(181): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
             with
             [
                 _Ty=TBUFIDX
             ]
+    ClientContext.cpp
     FIOCP.cpp
     IOCPNetwork.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(171): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+    IOCtx.cpp
     Logger.cpp
     network.cpp
     SimplIOCPServer.cpp
+    SocketCtx.cpp
     utilities.cpp
   Lib:
     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\Lib.exe /OUT:"lib\SIOCPServer_x64_Release.lib" /NOLOGO /MACHINE:X64 /LTCG x64\Release\AgentDestructor.obj
     x64\Release\BufferPool.obj
+    x64\Release\ClientContext.obj
     x64\Release\FIOCP.obj
     x64\Release\IOCPNetwork.obj
+    x64\Release\IOCtx.obj
     x64\Release\Logger.obj
     x64\Release\network.obj
     x64\Release\pch.obj
     x64\Release\SimplIOCPServer.obj
+    x64\Release\SocketCtx.obj
     x64\Release\utilities.obj
     SimplIOCPServer.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x64_Release.lib
   FinalizeBuildStatus:
@@ -49,13 +55,14 @@ c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\buffer
   
   "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" (Standardziel) (1) ->
   (ClCompile Ziel) -> 
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(100): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(173): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(102): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(181): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(171): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
   
-      2 Warnung(en)
+      3 Warnung(en)
       0 Fehler
   
-  Verstrichene Zeit 00:00:05.61
+  Verstrichene Zeit 00:00:05.54
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.lib
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.pdb
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x64_Debug.lib
@@ -65,20 +72,11 @@ c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\buffer
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\test_x86.lib
   C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\test_x86_Debug.lib
           8 Datei(en) kopiert.
-  unittest1.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(40): warning C4114: same type qualifier used more than once
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(78): warning C4244: 'initializing': conversion from '_Rep' to 'unsigned int', possible loss of data
-          with
-          [
-              _Rep=std::chrono::system_clock::rep
-          ]
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\unittests\unittest1.cpp(88): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
      Creating library C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Release\UnitTests.lib and object C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Release\UnitTests.exp
   Generating code
-  1 of 560 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  5 of 1088 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    6 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   UnitTests.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Release\UnitTests.dll

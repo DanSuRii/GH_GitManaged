@@ -1,22 +1,2 @@
-﻿  pch.cpp
-  AgentDestructor.cpp
-  BufferPool.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(102): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data
-          with
-          [
-              _Ty=TBUFIDX
-          ]
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(181): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data
-          with
-          [
-              _Ty=TBUFIDX
-          ]
-  FIOCP.cpp
-  IOCPNetwork.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(369): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
-  Logger.cpp
-  network.cpp
-  SimplIOCPServer.cpp
-  utilities.cpp
-  Generating Code...
+﻿  Logger.cpp
   SimplIOCPServer.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\x64\Debug\SimplIOCPServer.exe

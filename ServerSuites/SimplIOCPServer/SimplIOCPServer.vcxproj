@@ -158,20 +158,27 @@
     <ClInclude Include="..\..\..\..\..\..\Boost\boost\chrono\io\time_point_io.hpp" />
     <ClInclude Include="AgentDestructor.h" />
     <ClInclude Include="BufferPool.h" />
+    <ClInclude Include="ClientContext.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="FIOCP.h" />
+    <ClInclude Include="ICompletionKey.h" />
     <ClInclude Include="IOCPNetwork.h" />
+    <ClInclude Include="IOCtx.h" />
+    <ClInclude Include="IOMsgDispatcher.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="network.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SocketCtx.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AgentDestructor.cpp" />
     <ClCompile Include="BufferPool.cpp" />
+    <ClCompile Include="ClientContext.cpp" />
     <ClCompile Include="FIOCP.cpp" />
     <ClCompile Include="IOCPNetwork.cpp" />
+    <ClCompile Include="IOCtx.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="network.cpp" />
     <ClCompile Include="pch.cpp">
@@ -181,6 +188,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SimplIOCPServer.cpp" />
+    <ClCompile Include="SocketCtx.cpp" />
     <ClCompile Include="utilities.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -227,7 +227,7 @@ namespace NS_INVOKER_TESTS
 
 		ACallee()
 		{
-			auto toCall = &ACallee::Handle;
+			//auto toCall = &ACallee::Handle;
 		}
 	};
 

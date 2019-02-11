@@ -37,4 +37,7 @@
 
 #include "AgentDestructor.h"
 
+#include "ICompletionKey.h"
+#include "IOMsgDispatcher.h"
+
 #endif //PCH_H

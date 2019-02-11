@@ -1,6 +1,7 @@
 #pragma once
 
 #include "network.h"
+#include "SocketCtx.h"
 
 namespace NS_DPNET
 { 
@@ -11,7 +12,7 @@ namespace NS_DPNET
 		IOCP();
 		virtual ~IOCP();
 
-		bool Listen( std::string strPort );
+		virtual bool Listen( std::string strPort );
 	private:
 		void ClearIOCPHandle();
 		void ClearAndWaitsThreads();

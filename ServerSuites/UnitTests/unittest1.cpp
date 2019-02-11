@@ -10,6 +10,8 @@
 
 #include <list>
 #include <vector>
+#include <queue>
+
 #include "../SimplIOCPServer/types.h"
 #include "../SimplIOCPServer/constants.h"
 #include "../SimplIOCPServer/BufferPool.h"
@@ -164,9 +166,9 @@ namespace UnitTests
 					while(--nTryCnt)
 					{
 						LOG_FN(pStrs[generator() % _countof(pStrs)], pStrs[generator() % _countof(pStrs)], pStrs[generator() % _countof(pStrs)]);
+						std::this_thread::yield();
 					}
 
-					std::this_thread::yield();
 				});
 			}
 

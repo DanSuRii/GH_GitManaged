@@ -15,7 +15,14 @@ public:
 		network = New<NS_DPNET::IOCP>();
 	}
 
-	void Run() {};
+	void Run() {
+		if (network->GetStatus() != NS_DPNET::Network::ESTAT_AVAILABLE)
+		{
+			LOG_FN( ", failed to start: ", network->GetStatus() );
+			return;
+		}
+		network->Listen("38001");
+	};
 
 private:
 	NS_DPNET::PNetwork network;
