@@ -1,6 +1,4 @@
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\simpliocpserver.pch
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\vc141.pdb
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\pch.obj
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\utilities.obj
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\simpliocpserver.obj
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\network.obj
@@ -9,13 +7,18 @@ c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\re
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\fiocp.obj
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\bufferpool.obj
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\agentdestructor.obj
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\socketctx.obj
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\ioctx.obj
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\siocpserver_x64_release.pch
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\simpliocpserver.pdb
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\pch.obj
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\clientcontext.obj
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\lib\siocpserver_x64_release.lib
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\x64\release\simpliocpserver.exe
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\x64\release\simpliocpserver.pdb
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\x64\release\simpliocpserver.ipdb
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\x64\release\simpliocpserver.iobj
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\siocpserver_x64_release.pch
-c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\simpliocpserver.pdb
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\simpliocpserver.pch
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\simpliocpserver.tlog\cl.command.1.tlog
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\simpliocpserver.tlog\cl.read.1.tlog
 c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\x64\release\simpliocpserver.tlog\cl.write.1.tlog

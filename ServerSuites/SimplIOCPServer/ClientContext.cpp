@@ -20,16 +20,28 @@ namespace NS_DPNET
 
 	void ClientCtx::Handle(WriteIO & ioWrite, DWORD dwIOSize)
 	{
-		LOG_FN(", was been occurred");
-	}
-	void ClientCtx::Handle(ReadIO & ioWrite, DWORD dwIOSize)
-	{
-		LOG_FN(", was been occurred");
+		LOG_FN(", was been occurred");				
 	}
 
-
-	ClientCtx::ClientCtx()
+	void ClientCtx::Handle(ReadIO & ioRead, DWORD dwIOSize)
 	{
+		LOG_FN(", was been occurred");
+
+		// MessageDispatcher.Send( this->SvrID this->GetID() GetMsg( ioRead.GetBufKey() ) );
+				
+	}
+
+	ClientCtx::ClientCtx(HANDLE hIOCPtoJoin, SocketCtx&& sockCtx)
+		: _sockCtx( std::move( sockCtx ) )
+	{
+		HANDLE hIOCP = ::CreateIoCompletionPort((HANDLE)_sockCtx.Get(), hIOCPtoJoin, (ULONG_PTR)this, 0 );
+		if (NULL == hIOCP)
+		{
+			LOG_FN(", CreateIoCompletionPort() failed: %d\n", GetLastError());
+			return;
+		}
+
+		bInit = true;
 	}
 	
 	// Inherited via ICompletionKey

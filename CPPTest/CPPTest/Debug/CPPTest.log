@@ -1,4 +1,2 @@
 ﻿  MsgDispatcher_Fifth.cpp
-c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\msgdispatcher_fifth.cpp(66): warning C4307: '*': integral constant overflow
-  LINK : C:\Users\A.Roennburg\Documents\GH_GitManaged\CPPTest\Debug\CPPTest.exe not found or not built by the last incremental link; performing full link
-  CPPTest.vcxproj -> C:\Users\A.Roennburg\Documents\GH_GitManaged\CPPTest\Debug\CPPTest.exe
+c:\users\a.roennburg\documents\gh_gitmanaged\cpptest\cpptest\msgdispatcher_fifth.cpp(93): warning C4307: '*': integral constant overflow

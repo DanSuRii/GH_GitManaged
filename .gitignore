@@ -382,3 +382,7 @@ ASALocalRun/
 
 #Addional from Dahn
 *.exe
+
+ipch/
+*.ipch
+ServerSuites/.vs/

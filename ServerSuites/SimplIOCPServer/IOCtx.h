@@ -9,9 +9,15 @@ namespace NS_DPNET
 	class IOCtx : public OVERLAPPED
 	{
 	public:
+		IOCtx();
 		EIOTyp GetTyp();
 
 		//virtual void RequestHandleSelf(ICompletionKey& Receiver) = 0;
+		SOCKET GetSock() { return ctx.Get(); }
+		inline BuffAccessor GetBufKey() { return bufKey; }
+	protected:
+		SocketCtx ctx;
+		BuffAccessor bufKey = BufferPool::GetInstance().GetNewAccessor();
 	};
 
 /*
@@ -32,11 +38,7 @@ namespace NS_DPNET
 	public:
 		AcceptIO();
 
-		SOCKET GetSock() { return ctx.Get(); }
-		inline BuffAccessor GetBufKey() { return bufKey; }
 	private:
-		SocketCtx ctx;
-		BuffAccessor bufKey = BufferPool::GetInstance().GetNewAccessor();
 	};
 	using PAcceptIO = std::shared_ptr< AcceptIO >;
 

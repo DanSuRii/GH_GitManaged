@@ -20,7 +20,9 @@ namespace NS_DPNET
 #endif // false //it doesnt work
 
 	public:
-		ClientCtx();
+		ClientCtx(HANDLE hIOCPtoJoin, SocketCtx&& sockCtx);
+
+		bool isInit() { return bInit; }
 	private:
 
 		class CltMsgDispatcher : public IOMsgDispatcher<ClientCtx>
@@ -62,6 +64,9 @@ namespace NS_DPNET
 
 		// Inherited via ICompletionKey
 		virtual void HandleIO(IOCtx * pIOCtx, DWORD);
+
+		SocketCtx _sockCtx;
+		bool bInit = false;
 	};
 	//ClientCtx::CltMsgDispatcher ClientCtx::msgDispatcher;
 }

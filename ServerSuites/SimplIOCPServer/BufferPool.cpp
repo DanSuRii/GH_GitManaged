@@ -7,28 +7,39 @@
 BufferPool& gBuffPool = BufferPool::GetInstance();
 
 decltype(BuffAccessor::_mtxCont)	BuffAccessor::_mtxCont;
-std::vector< PREF_CNT >  BuffAccessor::_contRef(BUFFER_LEN);
+std::vector< PREF_CNT >  BuffAccessor::_contRef(DEFAULT_LEN);
 
 
 BuffAccessor::BuffAccessor(TBUFIDX idx)
 	: _idx(idx)
 {
-	IncreaseRef();
+		IncreaseRef();
 }
 
 BuffAccessor::BuffAccessor(BuffAccessor & rhs)
 	: _idx( rhs._idx )
 {
-	/*
-	++ref;
-	*/
-	IncreaseRef();
+		IncreaseRef();
+}
 
+BuffAccessor::BuffAccessor(BuffAccessor && rhs )
+	: _idx( rhs._idx )
+{
+	//it doesnt need to increase Reference.
+	rhs._idx = INVALID_IDX; 
 }
 
 
 BuffAccessor::~BuffAccessor()
 {
+	//if moved out then do nothing
+	if (false == IsValid())
+	{
+		//
+		::OutputDebugStringA( __FUNCSIG__ ", Moved out buffer accessor call the destructor");
+		return;
+	}
+
 	DecreaseRef();
 	//possibly already 0	
 
@@ -37,6 +48,7 @@ BuffAccessor::~BuffAccessor()
 
 int BuffAccessor::GetRefRemain()
 {
+	assert(IsValid());
 	assert(nullptr != _contRef[_idx]);
 	
 	return *(_contRef[_idx]);
@@ -44,6 +56,7 @@ int BuffAccessor::GetRefRemain()
 
 int BuffAccessor::GetRefRemain(TBUFIDX idx)
 {
+	assert(INVALID_IDX != idx);
 	assert(nullptr != _contRef[idx]);
 	assert(idx <= _contRef.size());
 
@@ -55,6 +68,12 @@ int BuffAccessor::GetRefRemain(TBUFIDX idx)
 
 void BuffAccessor::IncreaseRef()
 {
+	if (false == IsValid())
+	{
+		OutputDebugStringA( __FUNCSIG__ ", Invalid Index does not need to increase reference");
+		return;
+	}
+	//assert(IsValid());
 	if (_idx >= _contRef.size())
 	{
 		std::unique_lock< decltype(BuffAccessor::_mtxCont) > grd(BuffAccessor::_mtxCont );
@@ -84,6 +103,7 @@ void BuffAccessor::IncreaseRef()
 
 int BuffAccessor::DecreaseRef()
 {
+	assert(IsValid());
 	assert(_idx < _contRef.size());
 
 	_contRef[_idx]->operator--();
@@ -114,6 +134,9 @@ BuffAccessor BufferPool::GetNewAccessor()
 
 char * BufferPool::GetBuffer(BuffAccessor key)
 {
+	if (false == key.IsValid())
+		return nullptr;
+
 	BufInfo bufInfo = GetBufInfo(key);
 	return bufInfo._pBuffer;
 }
@@ -121,12 +144,14 @@ char * BufferPool::GetBuffer(BuffAccessor key)
 BufInfo BufferPool::GetBufInfo(BuffAccessor key)
 {
 	assert(nullptr != _cont[key.GetIdx()]);
+	assert( key.IsValid() );
 	auto buffInfo = _cont[key.GetIdx()]->GetBuffer();
 	return BufInfo{ buffInfo.second, buffInfo.first };
 }
 
 void BufferPool::AccessorDestruct(TBUFIDX key)
 {
+	assert( INVALID_IDX != key );
 	if (0 == BuffAccessor::GetRefRemain(key))
 	{
 		BufferRecycle(key);
@@ -156,7 +181,8 @@ bool BufferPool::AllAvailable()
 void BufferPool::BufferRecycle(TBUFIDX key)
 {
 	assert(nullptr != _cont[key]);
-	
+	assert(INVALID_IDX != key);
+
 	_cont[key]->ResetInUse();
 	
 	std::lock_guard< std::mutex > grd(_mtxAvailable);

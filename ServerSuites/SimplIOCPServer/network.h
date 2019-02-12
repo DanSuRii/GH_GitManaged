@@ -2,12 +2,23 @@
 
 namespace NS_DPNET
 {
+	//ID number must be globally unique for a prevent mistake send to another network
+	class ClientID
+	{
+	};
+
+	class ICBPostbox
+	{
+	public:
+		virtual void Post( ClientID, char* pBuf, size_t len ) = 0;
+	};
+
 	class Network
 	{
 	public:
 		enum ESTATE
 		{
-			ESTAT_INVALID = -100,
+			ESTAT_UNAVAILABLE = -100,
 
 			ESTAT_DESTROY = -2,
 			ESTAT_INVALID = -1,
@@ -24,6 +35,8 @@ namespace NS_DPNET
 
 		inline ESTATE GetStatus() { return eState; }
 		
+#pragma region REGION_DOESNTUSES
+
 #if false // it does not needed
 		template< ESTATE eState >
 		struct EnumStr
@@ -47,6 +60,8 @@ namespace NS_DPNET
 		}
 
 #endif // false // it does not needed
+
+#pragma endregion
 
 	protected:
 		ESTATE eState = ESTAT_INVALID;

@@ -228,17 +228,23 @@ namespace NS_DPNET
 		for (auto& cur : _threads)
 		{
 			cur.join();
+			std::stringstream strToOut;
+			strToOut << "Thread " << cur.get_id() << " was been Joined() \n";
+			OutputDebugStringA( strToOut.str().c_str() );
 		}
 	}
 
 	IOCP::~IOCP()
 	{
+		/*
 		while (0 < _contFNDestructor.size())
 		{
 			auto cur = _contFNDestructor.top();
 			cur();
 			_contFNDestructor.pop();
 		}
+		*/
+		dtorAgt.Destruct();
 	}
 
 	bool IOCP::Listen(std::string strPort)

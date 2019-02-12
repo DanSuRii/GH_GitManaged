@@ -36,17 +36,20 @@ class BuffAccessor
 	BuffAccessor(TBUFIDX idx);
 public:
 	BuffAccessor(BuffAccessor&);
-	BuffAccessor(BuffAccessor&&) = default;
+	BuffAccessor(BuffAccessor&&);
 
 	~BuffAccessor();
 
-	int GetRefRemain();
 
 	TBUFIDX GetIdx() { return _idx; }
 
-	static int GetRefRemain(TBUFIDX idx);
+	inline bool IsValid() { return _idx != INVALID_IDX; }
+
 
 private:
+	int GetRefRemain();
+	static int GetRefRemain(TBUFIDX idx);
+
 	void IncreaseRef();
 	int DecreaseRef();
 

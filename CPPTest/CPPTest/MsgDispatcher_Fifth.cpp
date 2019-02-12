@@ -9,15 +9,36 @@ namespace NS_DISPATCHER_FIFTH
 		static_cast<void>(a);
 	}
 
+	class AbstractVisitor
+	{
+	public:
+		virtual void Dispatch() = 0;
+	};
+
 	class IMsg
 	{
 	public:
+
+		virtual void visit(AbstractVisitor&) = 0;
 	};
 
 	template< int >
 	class MsgImpl : public IMsg
 	{
+	public:
+		virtual void visit(AbstractVisitor&)
+		{
 
+		}
+	};
+
+	template<class T>
+	class ConcreteVisitor : public AbstractVisitor
+	{
+		// Inherited via AbstractVisitor
+		virtual void Dispatch() override
+		{
+		}
 	};
 
 	class Recipient
@@ -39,12 +60,18 @@ namespace NS_DISPATCHER_FIFTH
 		}
 	}; 
 
+
+
+
 	class MessageDispatcher
 	{
 	public:
 		void HandleMsg(Recipient& recipient, IMsg& msg)
 		{
 			//recipient.HandleMsg(msg);
+
+
+
 		}
 	};
 

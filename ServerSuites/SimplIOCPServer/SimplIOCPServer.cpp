@@ -7,12 +7,28 @@
 #include "network.h"
 #include "IOCPNetwork.h"
 
+class Service
+{
+
+};
+
+class Services
+{
+public:
+	std::list<Service> services;
+};
+
 class Server
 {
 public:
 	Server()
 	{
 		network = New<NS_DPNET::IOCP>();
+	}
+
+	~Server()
+	{
+		_myThread.join();
 	}
 
 	void Run() {
@@ -25,13 +41,39 @@ public:
 	};
 
 private:
+
+	void WorkerThread()
+	{
+		while (false == bQuitFlag)
+		{
+			//TODO: Peek the MsgBox -> Process
+			std::this_thread::yield();
+		}
+	}
+		
+
 	NS_DPNET::PNetwork network;
+
+	void PostQuit() { bQuitFlag = true; }
+
+	std::atomic_bool bQuitFlag = false;
+
+	std::thread _myThread;
 };
 
 int main()
 {
+	auto accessor = BufferPool::GetInstance().GetNewAccessor();
+
+	auto accessorMoved(std::move(accessor));
+
+	//Read Configuration
+	//Generate Server Sets
+
 	Server server;
 	server.Run();
+
+	//wait for user command to quit or somthing another...
 
 	return 0;
 }

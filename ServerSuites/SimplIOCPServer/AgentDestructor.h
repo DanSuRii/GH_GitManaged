@@ -10,6 +10,7 @@ public:
 	virtual ~AgentDestructor();
 
 	virtual void Reg(_Callable _fn);
+	void Destruct();
 
 private:
 	std::stack< _Callable > _contFn;

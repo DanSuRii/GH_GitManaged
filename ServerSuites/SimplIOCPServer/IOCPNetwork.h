@@ -5,9 +5,9 @@
 
 namespace NS_DPNET
 { 
-
 	class IOCP : public Network
 	{
+		IOCP(const IOCP&) = delete;
 	public:
 		IOCP();
 		virtual ~IOCP();
@@ -21,7 +21,7 @@ namespace NS_DPNET
 
 		bool bInit = false;
 		HANDLE hIOCP;
-		std::stack< std::function< void(void) > > _contFNDestructor;
+		//std::stack< std::function< void(void) > > _contFNDestructor;
 
 		void RegDtor(AgentDestructor::_Callable fn);
 
