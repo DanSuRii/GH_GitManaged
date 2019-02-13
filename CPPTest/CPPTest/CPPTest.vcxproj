@@ -155,7 +155,9 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="apc_alertablewait_overlapped.cpp" />
     <ClCompile Include="CtxConsistency.cpp" />
+    <ClCompile Include="GlobalMsgDispatcher.cpp" />
     <ClCompile Include="Handlemsg.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CTest.cpp" />

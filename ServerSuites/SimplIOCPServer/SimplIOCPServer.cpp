@@ -7,73 +7,91 @@
 #include "network.h"
 #include "IOCPNetwork.h"
 
-class Service
+namespace NS_DPSERVER
 {
-
-};
-
-class Services
-{
-public:
-	std::list<Service> services;
-};
-
-class Server
-{
-public:
-	Server()
+	class Service
 	{
-		network = New<NS_DPNET::IOCP>();
-	}
 
-	~Server()
-	{
-		_myThread.join();
-	}
-
-	void Run() {
-		if (network->GetStatus() != NS_DPNET::Network::ESTAT_AVAILABLE)
-		{
-			LOG_FN( ", failed to start: ", network->GetStatus() );
-			return;
-		}
-		network->Listen("38001");
 	};
 
-private:
-
-	void WorkerThread()
+	class Services
 	{
-		while (false == bQuitFlag)
+	public:
+		std::list<Service> services;
+	};
+
+	class Server
+	{
+	public:
+		Server()
 		{
-			//TODO: Peek the MsgBox -> Process
-			std::this_thread::yield();
+			network = New<NS_DPNET::IOCP>();
 		}
-	}
-		
 
-	NS_DPNET::PNetwork network;
+		~Server()
+		{
+			_myThread.join();
+		}
 
-	void PostQuit() { bQuitFlag = true; }
+		void Run() {
+			if (network->GetStatus() != NS_DPNET::Network::ESTAT_AVAILABLE)
+			{
+				LOG_FN(", failed to start: ", network->GetStatus());
+				return;
+			}
+			network->Listen("38001");
+		};
 
-	std::atomic_bool bQuitFlag = false;
+	private:
 
-	std::thread _myThread;
-};
+		void WorkerThread()
+		{
+			while (false == bQuitFlag)
+			{
+				//TODO: Peek the MsgBox -> Process
+				std::this_thread::yield();
+			}
+		}
+
+		NS_DPNET::PNetwork network;
+
+		void PostQuit() { bQuitFlag = true; }
+
+		std::atomic_bool bQuitFlag = false;
+
+		std::thread _myThread;
+	};
+
+	class CltInstance
+	{
+	public:
+		using ClientID = int;
+	private:
+	};
+}
+
+namespace NS_DPCLIENT
+{
+	class Client
+	{
+	};
+}
 
 int main()
 {
 	auto accessor = BufferPool::GetInstance().GetNewAccessor();
-
 	auto accessorMoved(std::move(accessor));
+
+	auto network = New<NS_DPNET::IOCP>();
 
 	//Read Configuration
 	//Generate Server Sets
 
-	Server server;
+	NS_DPSERVER::Server server;
 	server.Run();
 
 	//wait for user command to quit or somthing another...
+
 
 	return 0;
 }

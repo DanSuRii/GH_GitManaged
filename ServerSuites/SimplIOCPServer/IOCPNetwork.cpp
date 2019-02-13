@@ -151,6 +151,11 @@ namespace NS_DPNET
 		{
 			LOG_FN();
 		}
+
+		//Call back to registered server someone's turn up.
+
+		//ioAccept.GetBufKey();
+
 	}
 
 	void Listener::RegistFirstAccept()

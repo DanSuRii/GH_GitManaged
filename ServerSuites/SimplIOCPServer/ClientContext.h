@@ -10,6 +10,7 @@ namespace NS_DPNET
 		void Handle(WriteIO& ioWrite, DWORD dwIOSize);
 		void Handle(ReadIO& ioRead, DWORD dwIOSize);
 
+#pragma region REG_DOSENTUSE
 #if false //it doesnt work
 		template<class _TArg>
 		auto GetInitalizeList()
@@ -18,6 +19,8 @@ namespace NS_DPNET
 		}
 
 #endif // false //it doesnt work
+
+#pragma endregion
 
 	public:
 		ClientCtx(HANDLE hIOCPtoJoin, SocketCtx&& sockCtx);
