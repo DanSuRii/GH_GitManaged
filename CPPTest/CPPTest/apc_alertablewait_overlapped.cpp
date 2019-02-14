@@ -30,7 +30,7 @@ namespace  NS_APC_ALERTABLEWAIT_OVERLAPPED
 		RAII(_Callable rhs)
 			: _fn(rhs)
 		{
-
+			std::tuple<int, double, int> arg;
 		}
 
 		~RAII()

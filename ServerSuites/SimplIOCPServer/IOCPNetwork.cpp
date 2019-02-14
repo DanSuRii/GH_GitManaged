@@ -153,7 +153,7 @@ namespace NS_DPNET
 		}
 
 		//Call back to registered server someone's turn up.
-
+		//Notify();
 		//ioAccept.GetBufKey();
 
 	}
