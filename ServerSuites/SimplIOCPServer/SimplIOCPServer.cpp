@@ -60,7 +60,33 @@ namespace NS_DPSERVER
 		std::atomic_bool bQuitFlag = false;
 
 		std::thread _myThread;
+		
+		class PostBox : public NS_DPNET::ICBPostbox
+		{
+			// Inherited via ICBPostbox
+			virtual void Post(NS_DPNET::ClientID cltID, char * pBuf, size_t len) override
+			{
+				if (len < sizeof(Msg::MsgHeader))
+				{
+					LOG_FN( ", Impossible to handle msg size is smaller than MsgHeader" );
+					return;
+				}
+
+				Msg::MsgHeader* pCurMsg = reinterpret_cast<Msg::MsgHeader*>(pBuf);
+				pCurMsg->_type;
+				//Relate msg or solo msg
+
+				//if pCurMsg->len() <>  typeInfo[ pcurMsg->Type() ]._len 
+				//return Invalid Packet: size does not matched
+			}
+
+		public:
+			/*std::queue< IMsgs >*/
+		};
+
+		//std::queue<  >
 	};
+
 
 	class CltInstance
 	{

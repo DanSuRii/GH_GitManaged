@@ -5,6 +5,16 @@ namespace NS_DPNET
 	//ID number must be globally unique for a prevent mistake send to another network
 	class ClientID
 	{
+		ClientID()
+			: cur(++generator)
+		{
+
+		}
+
+		auto get() { return cur; }
+	public:
+		std::int64_t cur;
+		static std::atomic_int64_t generator;
 	};
 
 	class ICBPostbox

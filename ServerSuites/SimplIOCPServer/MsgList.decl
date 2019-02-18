@@ -1,0 +1,5 @@
+REG_MSG(MsgReqLiquiditaets)
+REG_MSG(MsgResLiquidiates)
+REG_MSG(MsgChangeKonditionInfo)
+REG_MSG(MsgAddKonditionInfo)
+REG_MSG(MsgLiquiditaetsInfo)

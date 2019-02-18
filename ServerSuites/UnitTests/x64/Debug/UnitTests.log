@@ -1,1 +1,65 @@
-﻿
+﻿  Microsoft (R)-Build-Engine, Version 15.9.21+g9802d43bc3 für .NET Framework
+  Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+  
+  Der Buildvorgang wurde am 18.02.2019 13:27:05 gestartet.
+  Projekt "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" auf Knoten "1" (Standardziele).
+  InitializeBuildStatus:
+    Aktualisieren des Timestamps von "x64\Debug\SimplIOCPServer.tlog\unsuccessfulbuild".
+  ClCompile:
+    Alle Ausgaben sind aktuell.
+    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I\boost\ /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Yc"pch.h" /Fp"x64\Debug\SIOCPServer_x64_Debug.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\SimplIOCPServer.pdb" /Gd /TP /FC /errorReport:queue pch.cpp
+    pch.cpp
+    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I\boost\ /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"x64\Debug\SIOCPServer_x64_Debug.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\SimplIOCPServer.pdb" /Gd /TP /FC /errorReport:queue AgentDestructor.cpp BufferPool.cpp ClientContext.cpp FIOCP.cpp IOCPNetwork.cpp IOCtx.cpp Logger.cpp msgtypes.cpp network.cpp SimplIOCPServer.cpp SocketCtx.cpp utilities.cpp
+    AgentDestructor.cpp
+    BufferPool.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(122): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+            with
+            [
+                _Ty=TBUFIDX
+            ]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(207): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+            with
+            [
+                _Ty=TBUFIDX
+            ]
+    ClientContext.cpp
+    FIOCP.cpp
+    IOCPNetwork.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(192): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+    IOCtx.cpp
+    Logger.cpp
+    msgtypes.cpp
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\msgtypes.cpp(20): error C2760: syntax error: unexpected token 'string', expected ')' [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+    network.cpp
+    SimplIOCPServer.cpp
+    SocketCtx.cpp
+    utilities.cpp
+    Generating Code...
+  Die Erstellung des Projekts "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" ist abgeschlossen (Standardziele) -- FEHLER.
+  
+  Fehler beim Buildvorgang.
+  
+  "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" (Standardziel) (1) ->
+  (ClCompile Ziel) -> 
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(122): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\bufferpool.cpp(207): warning C4267: 'argument': conversion from 'size_t' to 'const _Ty', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\iocpnetwork.cpp(192): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+  
+  
+  "C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj" (Standardziel) (1) ->
+  (ClCompile Ziel) -> 
+c:\users\a.roennburg\documents\gh_gitmanaged\serversuites\simpliocpserver\msgtypes.cpp(20): error C2760: syntax error: unexpected token 'string', expected ')' [C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj]
+  
+      3 Warnung(en)
+      1 Fehler
+  
+  Verstrichene Zeit 00:00:06.17
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SimplIOCPServer.pdb
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x86_Debug.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\SIOCPServer_x86_Release.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\test_x86.lib
+  C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\test_x86_Debug.lib
+          6 Datei(en) kopiert.
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(128,5): error MSB3073: The command "msbuild C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\SimplIOCPServer.vcxproj /p:ConfigurationType=StaticLibrary;OutDir=lib\;Configuration=Debug;Platform=x64;TargetName=SIOCPServer_x64_Debug  & copy /y C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\SimplIOCPServer\lib\* C:\Users\A.Roennburg\Documents\GH_GitManaged\ServerSuites\lib\
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(128,5): error MSB3073: :VCEnd" exited with code -1.

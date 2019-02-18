@@ -71,5 +71,8 @@
     <ClCompile Include="apc_alertablewait_overlapped.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="visit_iteratior.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

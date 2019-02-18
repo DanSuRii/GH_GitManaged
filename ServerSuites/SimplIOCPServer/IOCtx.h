@@ -38,6 +38,10 @@ namespace NS_DPNET
 	public:
 		AcceptIO();
 
+		SocketCtx&& MigrateSocketCtx()
+		{
+			return std::move(ctx);
+		}
 	private:
 	};
 	using PAcceptIO = std::shared_ptr< AcceptIO >;
@@ -50,6 +54,13 @@ namespace NS_DPNET
 	class WriteIO : public IOCtx
 	{
 	public:
+
+		bool HandleIO(DWORD dwIoSize);
+
+	public:
+		int nTotalBytes;
+		int nSentBytes;
+
 	};
 
 }

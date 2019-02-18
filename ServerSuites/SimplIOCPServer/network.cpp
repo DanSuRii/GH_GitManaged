@@ -5,6 +5,8 @@
 
 namespace NS_DPNET
 {
+	decltype(ClientID::generator) ClientID::generator = 0;
+
 	//private class WSAInitializer
 	//once per system
 	class WSAInit

@@ -35,6 +35,8 @@ namespace NS_DPNET
 		/// possible to one to N accance waiting
 		void RegistFirstAccept();
 
+		void PerformAccept();
+
 		HANDLE _hIocp;
 
 		SocketCtx sock;
@@ -46,8 +48,6 @@ namespace NS_DPNET
 
 		bool bInit = false;
 
-
-
 		// Inherited via ICompletionKey
 		virtual void HandleIO(IOCtx * pIoCtx, DWORD dwIOSize) override
 		{
@@ -57,6 +57,8 @@ namespace NS_DPNET
 			auto acceptIO = static_cast<AcceptIO*>(pIoCtx);
 			Handle( *acceptIO );
 		}
+	public:
+		void RegistNextAccept();
 	};
 
 	Listener::Listener(HANDLE hIocp, std::string strPort)
@@ -151,11 +153,18 @@ namespace NS_DPNET
 		{
 			LOG_FN();
 		}
+		
+		SocketCtx ctxAccepted( ioAccept.MigrateSocketCtx() );
 
 		//Call back to registered server someone's turn up.
 		//Notify();
 		//ioAccept.GetBufKey();
+		// Attach Global Message Queue to generate New Client Ctx
 
+		//Generate Client Ctx... Generate new Client msg or directly make here...
+
+		/* Do not directly call here, just delayed process to register this call instantly to prevent ioAccept invalidation */
+		RegistNextAccept();
 	}
 
 	void Listener::RegistFirstAccept()
@@ -163,6 +172,11 @@ namespace NS_DPNET
 		assert(nullptr == pAcceptIO);
 		pAcceptIO = New< decltype(pAcceptIO)::element_type >();
 
+		PerformAccept();
+	}
+
+	void Listener::PerformAccept()
+	{
 		const DWORD dwAddrLen = sizeof(SOCKADDR_STORAGE) + 16;
 		DWORD dwRecvNumBytes(0);
 
@@ -175,6 +189,17 @@ namespace NS_DPNET
 			, &dwRecvNumBytes
 			, pAcceptIO.get());
 	}
+
+	void Listener::RegistNextAccept()
+	{
+		// TODO: Add your implementation code here.
+		assert(nullptr != pAcceptIO);
+		auto lastestAcceptIO = pAcceptIO;
+		pAcceptIO = New< decltype(pAcceptIO)::element_type >();
+
+		PerformAccept();
+	}
+	
 
 	class SystemInfo
 	{
@@ -310,3 +335,4 @@ namespace NS_DPNET
 	}
 
 } //NS_DPNET
+

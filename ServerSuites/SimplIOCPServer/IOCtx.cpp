@@ -16,4 +16,12 @@ namespace NS_DPNET
 	AcceptIO::AcceptIO()
 	{
 	}
+	bool WriteIO::HandleIO(DWORD dwIoSize)
+	{
+		nSentBytes += dwIoSize;
+		if (nSentBytes < nTotalBytes)
+			return false;
+
+		return true;
+	}
 }

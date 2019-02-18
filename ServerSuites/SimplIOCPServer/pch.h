@@ -33,11 +33,15 @@
 
 
 #include <sstream>
+
 #include "logger.h"
 
 #include "AgentDestructor.h"
 
 #include "ICompletionKey.h"
 #include "IOMsgDispatcher.h"
+
+#include "msgs.h"
+#include "msgtypes.h"
 
 #endif //PCH_H

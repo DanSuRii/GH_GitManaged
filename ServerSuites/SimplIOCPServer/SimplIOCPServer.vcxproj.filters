@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="MsgGenerate">
+      <UniqueIdentifier>{23fcf582-93f1-4b1d-af07-8d3ae8bbe642}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -63,6 +66,12 @@
     <ClInclude Include="ClientContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="msgtypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="msgs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -101,8 +110,14 @@
     <ClCompile Include="ClientContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="msgtypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="inclBoost.props" />
+    <None Include="MsgList.decl">
+      <Filter>MsgGenerate</Filter>
+    </None>
   </ItemGroup>
 </Project>

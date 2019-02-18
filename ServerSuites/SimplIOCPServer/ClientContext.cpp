@@ -21,6 +21,11 @@ namespace NS_DPNET
 	void ClientCtx::Handle(WriteIO & ioWrite, DWORD dwIOSize)
 	{
 		LOG_FN(", was been occurred");				
+
+		if (false == ioWrite.HandleIO(dwIOSize))
+		{
+			ioWrite.GetBufKey();
+		}
 	}
 
 	void ClientCtx::Handle(ReadIO & ioRead, DWORD dwIOSize)
@@ -50,7 +55,13 @@ namespace NS_DPNET
 	{
 		CHECK_RETURN(nullptr == pIOCtx, "nullptr failed");
 		auto fn = GetHandlerFn(typeid(*pIOCtx));
-		fn(this, pIOCtx, dwIOSize);
+		if (fn) {
+			fn(this, pIOCtx, dwIOSize);
+		}
+		else {
+			LOG_FN( ", Handler does not exists" );
+		}
+
 	}
 
 }
